@@ -1,0 +1,139 @@
+/*=== 16. MAP HALF ===*/
+.inner-container{
+  position: relative;
+  .map-lg-fixed{
+    @include desktops{
+      position: fixed;
+      top: 0;
+      width: 50%;
+      height: 100vh;
+      .map-container{
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 990;
+        margin-bottom: 0px;
+        #map-canvas{
+          &.map-half{
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+#iw-container {
+	padding-right: 20px;
+}
+
+.grid-two-items {
+  .inner-container .map-lg-fixed {
+    @include desktops {
+      width: 66.66666667%;
+    }
+    @include large-desktops {
+      width: 50%;
+    }
+  }
+}
+
+
+
+/*  Boxed Layout Map */
+body.boxed {
+  .inner-container {
+    .map-fixed {
+      .map-container {
+        @include desktops {
+          width: 470px;
+        }
+        @include large-desktops {
+          width: 615px;
+        }
+      }
+    }
+  }
+}
+
+
+/* Google Map Cluster */
+
+.cluster img{
+  display: none;
+}
+
+.cluster div{
+  background: #2196f3;
+  text-align: center;
+  font-size: 15px!important;
+  color: #fff!important;
+  font-weight: 600;
+  border-radius: 100%;
+  width: 40px!important;
+  height: 40px!important;
+  line-height: 38px!important;
+  box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.1);
+  border: 2px solid #fff;
+  transition: all 100ms 3inear;
+  animation: cluster-animation 1.5s infinite;
+}
+
+@keyframes cluster-animation{
+  0%,100%{
+    box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.1);
+  }
+
+  50%{
+    box-shadow: 0px 0px 0px 9px rgba(0,0,0,0.1);
+  }
+}
+
+
+#map-add-edit{
+  height: 100%;
+}
+
+
+.map-sidebar {
+  width: 100%;
+  @include large-desktops {
+    width: 322px;
+  }
+  #map {
+    border-radius: 4px;
+  }
+}
+.map-right{
+	float: right;
+}
+.map-margin-btm{
+	margin-bottom: 40px;
+}
+.mapArea{
+	height: 290px;
+}
+.mapArea #map-canvas{
+	height: 260px;
+}
+
+
+/* Google Map Infobox */
+.infoBox {
+    margin-top: 0;
+    margin-left: 0;
+}
+
+
+/* Google Map Iframe Style Overwrite */
+.gmnoprint .gm-style-mtc{
+  div span{
+    vertical-align: initial !important;
+
+    img{
+      vertical-align: initial !important;
+    }
+  }
+}

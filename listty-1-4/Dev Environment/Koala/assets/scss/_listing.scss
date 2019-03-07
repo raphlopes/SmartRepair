@@ -1,0 +1,64 @@
+/*=== 17. LISTINGE ===*/
+.map-half-content {
+  padding-bottom: 0;
+  .searchArea.banerInfo {
+    text-align: left;
+    margin-top: 30px;
+    @include desktops {
+      margin-top: 0;
+    }
+    .form-group {
+      @include tablet {
+        margin-bottom: 20px;
+      }
+      @include large-desktops {
+        margin-bottom: 30px;
+      }
+    }
+    .btn {
+      margin-top: 26px;
+      @include tablet {
+        margin-top: 0;
+      }
+    }
+    &.grid-search {
+      .btn {
+        @include desktops {
+          margin-top: 20px;
+        }
+        @include large-desktops {
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+  .searchPartTitle {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .paginationCommon {
+    nav {
+      border-top: 0;
+      margin: 0;
+    }
+    .pagination {
+      margin-top: 0;
+      @include large-desktops {
+        margin-top: 30px;
+      }
+    }
+  }
+  .copyRight {
+    border-top: 1px solid $border-color;
+    p {
+      margin-top: 25px;
+    }
+  }
+  section {
+    @include tablet {
+      padding: 50px 0;
+    }
+  }
+
+}
