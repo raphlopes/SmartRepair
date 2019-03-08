@@ -250,16 +250,27 @@
 								<h3>Contact Information</h3>
 								<div class="row">
 									<div class="form-group col-sm-6 col-xs-12">
-										<label for="firstName" class="control-label">First Name*</label>
-										<input type="text" class="form-control" id="firstName">
-									</div>
+									  <label for="nom" class="control-label">Nom*</label>
+									  <input type="text" class="form-control" id="nom"
+										placeholder="Votre nom" name="nom"">
+								  </div>
 									<div class="form-group col-sm-6 col-xs-12">
-										<label for="lastName" class="control-label">Last Name*</label>
-										<input type="text" class="form-control" id="lastName">
-									</div>
+									  <label for="prenom" class="control-label">Prenom*</label>
+									  <input type="text" class="form-control" id="prenom" placeholder="Votre prenom" name="prenom">
+								  </div>
 									<div class="form-group col-xs-12">
-										<label for="emailAdress" class="control-label">Email Address*</label>
-										<input type="email" class="form-control" id="emailAdress">
+										<label for="mail_user" class="control-label">Address*</label>
+										<input type="email" class="form-control" id="mail_user" placeholder="Votre mail" name="mail_user">
+										
+										
+									</div>
+									
+									<div class="form-group col-xs-12">
+										<label for="mail_user" class="control-label">Confirm Email Address*</label>
+										<input type="email" class="form-control" id="mail_user_confirm" placeholder="Confirmez votre mail" name="mail_user_confirm" >
+										
+										
+										
 									</div>
 								</div>
 							</div>
@@ -269,14 +280,17 @@
 									<div class="form-group col-xs-12">
 										<label for="usernames" class="control-label">Username*</label>
 										<input type="text" class="form-control" id="usernames">
+										
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
 										<label for="passwordFirst" class="control-label">Password*</label>
-										<input type="password" class="form-control" id="password">
+										<input type="password" class="form-control" id="mdp" placeholder="Votre mot de passe" name="mdp">
+										
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
 										<label for="passwordAgain" class="control-label">Password (re-type)*</label>
-										<input type="password" class="form-control" id="passwordAgain">
+										<input type="password" class="form-control" id="mdp2" placeholder="Confirmez votre mdp"  name="mdp2">
+										
 									</div>
 								</div>
 							</div>
@@ -296,7 +310,7 @@
 										</div>
 									</div>
 									<div class="form-group col-xs-12 mb0">
-										<button type="submit" class="btn btn-primary">Create Account</button>
+										<button type="submit" name="forminscription" class="btn btn-primary">Je m'inscris</button>
 									</div>
 								</div>
 							</div>
