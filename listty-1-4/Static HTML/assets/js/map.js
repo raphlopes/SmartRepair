@@ -269,7 +269,7 @@ if(mapId){
     var mapListingUrl = "assets/js/listings.json";
 
     // map center
-    var center = new google.maps.LatLng(-33.924351, 151.156788);
+    var center = new google.maps.LatLng(48.8534, 2.3488);
 
     //Map initialize function
     function initialize() {
@@ -554,8 +554,8 @@ if(mapId){
 var listingDetails = document.getElementById('listing-details');
 if (listingDetails) {
   const urlParams = new URLSearchParams(window.location.search);
-  var lat = urlParams.has('lat') ? parseFloat(urlParams.get('lat')) : -33.8699;
-  var lng = urlParams.has('lng') ? parseFloat(urlParams.get('lng')) : 151.2195;
+  var lat = urlParams.has('lat') ? parseFloat(urlParams.get('lat')) : 48.8534;
+  var lng = urlParams.has('lng') ? parseFloat(urlParams.get('lng')) : 2.3488;
 
   var mapIdSingle = document.getElementById('map');
   if (mapIdSingle) {
@@ -565,7 +565,7 @@ if (listingDetails) {
       var map = new google.maps.Map(mapIdSingle, {
         zoom: 16,
         styles: mapStyles,
-        center: { lat: lat, lng: lng }
+        center: {lat: 48.8534, lng: 2.3488}
       });
 
       marker = new google.maps.Marker({
@@ -589,7 +589,7 @@ if(mapAddEdit){
 
   function initAutocomplete() {
     var map = new google.maps.Map(mapAddEdit, {
-      center: {lat: -33.8688, lng: 151.2195},
+      center: {lat: 48.8534, lng: 2.3488},
       zoom: 13,
       mapTypeId: 'roadmap'
     });
