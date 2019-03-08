@@ -4,7 +4,7 @@
     <script type="text/javascript">
       var onloadCallback = function() {
         grecaptcha.render('html_element', {
-          'sitekey' : '6LcqWJYUAAAAALg_MNY3oNnjn1F8_PJJiw1OFqf9'
+          'sitekey' : '6LcrVpYUAAAAADj8XZ-2v569vN6aSHA3VtKBwBGa'
         });
       };
     </script>
