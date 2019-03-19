@@ -27,6 +27,7 @@
 
 
 
+
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -41,13 +42,19 @@
   <!-- FAVICON -->
   <link href="assets/img/favicon.png" rel="shortcut icon">
 
+	
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+	<script src="https://raw.githubusercontent.com/lewagon/google-place-autocomplete/gh-pages/autocomplete.js"></script>
+<script> google.maps.event.addDomListener(window, 'load', function() {  
+  initializeAutocomplete('user_input_autocomplete_address');
+});
+		</script>
+	
 </head>
 
 <body id="body" class="body-wrapper boxed-menu" >
@@ -280,7 +287,7 @@
 									<input type="text" class="form-control" id="listingWebsite" placeholder="http://">
 								</div>
 								<div class="form-group col-sm-6 col-xs-12">
-									<label for="listingAddress">Addresse</label>
+									<label for="listingAddress">Adresse</label>
 									<input type="text" class="form-control" id="listingAddress" placeholder="Type Location">
 								</div>
 
