@@ -1,5 +1,48 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
+class GmapApi {
+
+    private static $apikey = 'AIzaSyCUuEI5R2OBqsu1qj2iv2CnbznI0N-X6M4';
+
+    public static function geocodeAddress($address) {
+        //valeurs vide par défaut
+        $data = array('address' => '', 'lat' => '', 'lng' => '');
+        //on formate l'adresse
+        $address = str_replace(" ", "+", $address);
+        //on fait l'appel à l'API google map pour géocoder cette adresse
+        $json = file_get_contents("https://maps.google.com/maps/api/geocode/json?key=" . self::$apikey . "&address=$address&sensor=false&region=fr");
+        $json = json_decode($json);
+        //on enregistre les résultats recherchés
+        if ($json->status == 'OK' && count($json->results) > 0) {
+            $res = $json->results[0];
+            //adresse complète et latitude/longitude
+            $data['address'] = $res->formatted_address;
+            $data['lat'] = $res->geometry->location->lat;
+            $data['lng'] = $res->geometry->location->lng;
+            foreach ($res->address_components as $component) {
+                //ville
+               
+                //départment
+               
+                //région
+                
+                //pays
+                
+                //code postal
+                
+            }
+        }
+        return $data;
+    }
+
+}
+
+?>
+
+
+
+
+<?php
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 
 if(isset($_POST['forminscription'])) {
 
@@ -24,30 +67,84 @@ if(isset($_POST['forminscription'])) {
 
 
    $nom = htmlspecialchars($_POST['nom']);
-   $prenom = htmlspecialchars($_POST['prenom']);
+   $description = htmlspecialchars($_POST['description']);
+   $site_internet = htmlspecialchars($_POST['site_internet']);
+   $numero_telephone = htmlspecialchars($_POST['numero_telephone']);
+   $adresse = htmlspecialchars($_POST['adresse']);
    $mail_user = htmlspecialchars($_POST['mail_user']);
    $mail_user_confirm = htmlspecialchars($_POST['mail_user_confirm']);
    $mdp = sha1($_POST['mdp']);
    $mdp2 = sha1($_POST['mdp2']);
-   if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['mail_user']) AND !empty($_POST['mail_user_confirm']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
+   if(!empty($_POST['nom']) AND !empty($_POST['description']) AND !empty($_POST['site_internet']) AND !empty($_POST['numero_telephone']) AND !empty($_POST['mail_user']) AND !empty($_POST['mail_user_confirm']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']) AND !empty($_POST['adresse'])) {
+
       $nomlength = strlen($nom);
-      $prenomlength = strlen($prenom);
+      $descriptionlength = strlen($description);
+      $site_internetlength = strlen($site_internet);
+      $numero_telephonelength = strlen($numero_telephone);
+      $adresselength = strlen($numero_telephone);
+
+
+
       if($nomlength <= 255) {
-         if($prenomlength <= 255) {
+         if($descriptionlength <= 255) {
+         if($site_internetlength <= 255) {
+            if($adresselength <= 255){
+         if($numero_telephonelength <= 255){
+
          if($mail_user == $mail_user_confirm) {
             if(filter_var($mail_user, FILTER_VALIDATE_EMAIL)) {
-               $reqmail = $bdd->prepare("SELECT * FROM membres WHERE mail = ?");
+               $reqmail = $bdd->prepare("SELECT * FROM reparateur WHERE mail = ?");
                $reqmail->execute(array($mail_user));
                $mailexist = $reqmail->rowCount();
                if($mailexist == 0) {
                   if($mdp == $mdp2) {
 
-                     if($resp->isSuccess()){
+                     if(1==1){
 
 
-                     $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenom, mail, motdepasse) VALUES(?, ?, ?, ?)");
-                     $insertmbr->execute(array($nom, $prenom, $mail_user, $mdp));
+                     $data = GmapApi::geocodeAddress($_POST['adresse']);
+                     //on affiche les différente infos
+                     echo '<ul>';
+                     foreach ($data as $key=>$value){
+                         echo '<li>'.$key.' : '.$value.'</li>';
+                     }
+                     echo '</ul>';
+
+
+                     $type="reparateur";
+try{
+
+
+                     $insertmbr = $bdd->prepare("INSERT INTO adresse(adresse, type, lat, lng) VALUES(?, ?, ?, ?)");
+                     //$insertmbr = $bdd->prepare("INSERT INTO adresse("caca", "caca", 1, 1)";
+                     $insertmbr->execute(array($data['address'],$type, $data['lat'] ,$data['lat']));
+                     //$insertmbr->execute(array($data['address'], $type, $data['lat'],$data['lng']));
+
+}catch (Exception $e)
+
+{
+
+        die('Erreur : ' . $e->getMessage());
+
+}
+                  
+                   //  $recup_id_adresse = $bdd->prepare("SELECT id_adresse FROM adresse WHERE adresse = ?");
+                     //$insertmbr->execute(array("toto", "toto", "toto", "48.859798","48.859798");
+                     //$recup_id_adresse->execute(array($data['address']));
+                     $adresse_info =$bdd->lastInsertID();
+                     echo '<li>'.$bdd->lastInsertID() .'</li>';
+
+
+
+                     $insertmbr = $bdd->prepare("INSERT INTO reparateur(nom, id_adresse_ref, description, moyen_paiement_cash, moyen_paiement_carte, moyen_paiement_cheque, note, site_internet, mail, mot_de_passe, numero_telephone) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                     $insertmbr->execute(array($nom, $adresse_info, $description, "1", "1", "1","0", $site_internet, $mail_user, $mdp, "0"));
                      $msg = "Vous avez bien été enregistré. Un email de confirmation vous a été envoyé ! <a href=\"connexion.php\">Se connecter</a>";
+
+
+
+                     // inscription de l'adresse 
+
+                   
 
                   
                        /*
@@ -61,7 +158,7 @@ if(isset($_POST['forminscription'])) {
                               <div align="center">
                                  <img src="https://image.noelshack.com/fichiers/2019/09/5/1551470933-logo1-copie.png"/>
                                  <br />
-                                 Bonjour '.$_POST['nom']. ' '.$_POST['prenom']. ' nous sommes heureux de vous accueillir au sein de la communauté SmartRepair. <br /><br />
+                                 Bonjour '.$_POST['nom']. ' '.$_POST['description']. ' nous sommes heureux de vous accueillir au sein de la communauté SmartRepair. <br /><br />
                                  Pour pouvoir bénéficier dès maintenant de notre site voici vos informations concernant votre comtpe <br /><br />
                                  <u>Votre ID de connexion : </u>'.$_POST['mail_user'].'<br />
                                  <u>Votre mot de passe : </u>'.$_POST['mdp'].'<br />
@@ -94,12 +191,26 @@ if(isset($_POST['forminscription'])) {
          } else {
             $msg = "Veuillez confirmer votre e-mail";
          }
+
+
+         } else {
+         $msg = "Le nombre de caractère pour votre telephone a été dépassé";
+      }
+
       } else {
-         $msg = "Le nombre de caractère pour votre prénom a été dépassé";
+         $msg = "Le nombre de caractère pour votre adresse a été dépassé";
+      }
+
+       } else {
+         $msg = "Le nombre de caractère pour votre site a été dépassé";
+      }
+
+      } else {
+         $msg = "Le nombre de caractère pour votre description a été dépassé";
       }
 
    } else {
-         $msg = "Le nombre de caractère pour votre prénom a été dépassé";
+         $msg = "Le nombre de caractère pour votre nom a été dépassé";
       }
 
    } else {
@@ -130,12 +241,38 @@ if(isset($_POST['forminscription'])) {
                </tr>
                <tr>
                   <td align="right">
-                     <label for="prenom">prenom :</label>
+                     <label for="description">description :</label>
                   </td>
                   <td>
-                     <input type="text" placeholder="Votre prenom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
+                     <input type="text" placeholder="Votre description" id="description" name="description" value="<?php if(isset($description)) { echo $description; } ?>" />
                   </td>
                </tr>
+               <tr>
+                  <td align="right">
+                     <label for="description">site internet :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre site" id="site_internet" name="site_internet" value="<?php if(isset($site_internet)) { echo $site_internet; } ?>" />
+                  </td>
+               </tr>
+               <tr>
+                  <td align="right">
+                     <label for="description">Telephone :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre telephone" id="numero_telephone" name="numero_telephone" value="<?php if(isset($numero_telephone)) { echo $numero_telephone; } ?>" />
+                  </td>
+               </tr>
+
+               <tr>
+                  <td align="right">
+                     <label for="adresse">adresse :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre adresse" id="adresse" name="adresse" value="<?php if(isset($adresse)) { echo $adresse; } ?>" />
+                  </td>
+               </tr>
+
                <tr>
                   <td align="right">
                      <label for="mail">Mail :</label>

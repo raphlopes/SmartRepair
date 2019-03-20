@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 
 if(isset($_POST['forminscription'])) {
 
@@ -24,19 +24,19 @@ if(isset($_POST['forminscription'])) {
 
 
    $nom = htmlspecialchars($_POST['nom']);
-   $prenom = htmlspecialchars($_POST['prenom']);
+   $description = htmlspecialchars($_POST['description']);
    $mail_user = htmlspecialchars($_POST['mail_user']);
    $mail_user_confirm = htmlspecialchars($_POST['mail_user_confirm']);
    $mdp = sha1($_POST['mdp']);
    $mdp2 = sha1($_POST['mdp2']);
-   if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['mail_user']) AND !empty($_POST['mail_user_confirm']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
+   if(!empty($_POST['nom']) AND !empty($_POST['description']) AND !empty($_POST['mail_user']) AND !empty($_POST['mail_user_confirm']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
       $nomlength = strlen($nom);
-      $prenomlength = strlen($prenom);
+      $descriptionlength = strlen($description);
       if($nomlength <= 255) {
-         if($prenomlength <= 255) {
+         if($descriptionlength <= 255) {
          if($mail_user == $mail_user_confirm) {
             if(filter_var($mail_user, FILTER_VALIDATE_EMAIL)) {
-               $reqmail = $bdd->prepare("SELECT * FROM membres WHERE mail = ?");
+               $reqmail = $bdd->prepare("SELECT * FROM reparateur WHERE mail = ?");
                $reqmail->execute(array($mail_user));
                $mailexist = $reqmail->rowCount();
                if($mailexist == 0) {
@@ -45,8 +45,8 @@ if(isset($_POST['forminscription'])) {
                      if($resp->isSuccess()){
 
 
-                     $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenom, mail, motdepasse) VALUES(?, ?, ?, ?)");
-                     $insertmbr->execute(array($nom, $prenom, $mail_user, $mdp));
+                     $insertmbr = $bdd->prepare("INSERT INTO reparateur(nom, description, mail, motdepasse) VALUES(?, ?, ?, ?)");
+                     $insertmbr->execute(array($nom, $description, $mail_user, $mdp));
                      $msg = "Vous avez bien été enregistré. Un email de confirmation vous a été envoyé ! <a href=\"connexion.php\">Se connecter</a>";
 
                   
@@ -61,7 +61,7 @@ if(isset($_POST['forminscription'])) {
                               <div align="center">
                                  <img src="https://image.noelshack.com/fichiers/2019/09/5/1551470933-logo1-copie.png"/>
                                  <br />
-                                 Bonjour '.$_POST['nom']. ' '.$_POST['prenom']. ' nous sommes heureux de vous accueillir au sein de la communauté SmartRepair. <br /><br />
+                                 Bonjour '.$_POST['nom']. ' '.$_POST['description']. ' nous sommes heureux de vous accueillir au sein de la communauté SmartRepair. <br /><br />
                                  Pour pouvoir bénéficier dès maintenant de notre site voici vos informations concernant votre comtpe <br /><br />
                                  <u>Votre ID de connexion : </u>'.$_POST['mail_user'].'<br />
                                  <u>Votre mot de passe : </u>'.$_POST['mdp'].'<br />
@@ -130,10 +130,10 @@ if(isset($_POST['forminscription'])) {
                </tr>
                <tr>
                   <td align="right">
-                     <label for="prenom">prenom :</label>
+                     <label for="description">description :</label>
                   </td>
                   <td>
-                     <input type="text" placeholder="Votre prenom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
+                     <input type="text" placeholder="Votre description" id="description" name="description" value="<?php if(isset($description)) { echo $description; } ?>" />
                   </td>
                </tr>
                <tr>

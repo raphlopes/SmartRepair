@@ -16,9 +16,19 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
    </head>
    <body>
       <div align="center">
-         <h2>Profil de <?php echo $userinfo['nom']; ?></h2>
+         <h2>Profil de <?php echo $userinfo['nom']; ?> <?php echo " " ?> <h2><?php echo $userinfo['prenom'] ; ?></h2> </h2>
          <br /><br />
          <?php
+
+
+         if(empty($userinfo['avatar']))
+         {
+            ?> 
+            <img src="membres/avatars/defaut.png<?php echo $userinfo['avatar'] ; ?>" width="150" />
+            <?php
+            
+         }
+
          if(!empty($userinfo['avatar']))
          {
             ?> 

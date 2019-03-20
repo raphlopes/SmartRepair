@@ -2,27 +2,6 @@
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
 
 if(isset($_POST['forminscription'])) {
-
-      //code du captcha api google
-
-     require('recaptcha/autoload.php');
-    if(isset($_POST['g-recaptcha-response'])) {
-      $recaptcha = new \ReCaptcha\ReCaptcha('6LcrVpYUAAAAAD3hbk7Jq1_aDwmyn-9Lee0rLJEW');
-      $resp = $recaptcha->verify($_POST['g-recaptcha-response']);
-      if ($resp->isSuccess()) {
-          //var_dump('Captcha Valide');
-      } else {
-          //$errors = $resp->getErrorCodes();
-          //var_dump('Captcha Invalide');
-          //var_dump($errors);
-      }
-    } else {
-      var_dump('Captcha non rempli');
-    }
-
-    //code pour mettre une image par défaut 
-
-
    $nom = htmlspecialchars($_POST['nom']);
    $prenom = htmlspecialchars($_POST['prenom']);
    $mail_user = htmlspecialchars($_POST['mail_user']);
@@ -41,10 +20,6 @@ if(isset($_POST['forminscription'])) {
                $mailexist = $reqmail->rowCount();
                if($mailexist == 0) {
                   if($mdp == $mdp2) {
-
-                     if($resp->isSuccess()){
-
-
                      $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenom, mail, motdepasse) VALUES(?, ?, ?, ?)");
                      $insertmbr->execute(array($nom, $prenom, $mail_user, $mdp));
                      $msg = "Vous avez bien été enregistré. Un email de confirmation vous a été envoyé ! <a href=\"connexion.php\">Se connecter</a>";
@@ -78,9 +53,7 @@ if(isset($_POST['forminscription'])) {
                      
                         */
 
-               }else {
-                  $msg = "Veuillez valider votre captcha";
-               }
+               
 
                   } else {
                      $msg = "Veuillez entrer un mot de passe valide";
@@ -168,19 +141,6 @@ if(isset($_POST['forminscription'])) {
                      <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
                   </td>
                </tr>
-
-               <tr>
-                  <td align="right">
-                     <label for="mdp2">Confirmation de la sécurité</label>
-                  </td>
-                  <td>
-                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                     <div class="g-recaptcha" data-sitekey="6LcrVpYUAAAAADj8XZ-2v569vN6aSHA3VtKBwBGa"></div>
-                     <br/>
-                  </td>
-               </tr>
-
-
                <tr>
                   <td></td>
                   <td align="center">
