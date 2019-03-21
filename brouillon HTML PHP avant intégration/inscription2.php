@@ -112,7 +112,8 @@ if(isset($_POST['forminscription'])) {
 
 
                      $type="reparateur";
-try{
+                  
+                     try{
 
 
                      $insertmbr = $bdd->prepare("INSERT INTO adresse(adresse, type, lat, lng) VALUES(?, ?, ?, ?)");
@@ -120,13 +121,13 @@ try{
                      $insertmbr->execute(array($data['address'],$type, $data['lat'] ,$data['lat']));
                      //$insertmbr->execute(array($data['address'], $type, $data['lat'],$data['lng']));
 
-}catch (Exception $e)
+                        }catch (Exception $e)
 
-{
+                        {
 
-        die('Erreur : ' . $e->getMessage());
+                                die('Erreur : ' . $e->getMessage());
 
-}
+                        }
                   
                    //  $recup_id_adresse = $bdd->prepare("SELECT id_adresse FROM adresse WHERE adresse = ?");
                      //$insertmbr->execute(array("toto", "toto", "toto", "48.859798","48.859798");
@@ -316,7 +317,118 @@ try{
                      <br/>
                   </td>
                </tr>
+<tr>
+ 
 
+ 
+
+
+
+                      <?php
+
+
+                      try
+                        {
+                            $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+
+
+                         
+                          $subjectName = $bdd->query('SELECT id_nom FROM marque');
+
+ 
+                          while ($data = $subjectName->fetch())
+                           {
+                               //On affiche l'id et le nom du client en cours
+                               echo "<input type='checkbox' name='marque[]' id='test' value='{$data['id_nom']}'>" . $data['id_nom'] . '</br>';
+
+
+                           }
+
+
+
+
+                           $subjectName->closeCursor();
+                           }
+                           catch(Exception $e)
+                           {
+                               die('Erreur : '.$e->getMessage());
+                           }
+
+                           //if(isset($_POST['checkbox'])) {
+
+
+                        while ($data = $subjectName->fetch()){
+                           if (isset($_POST['marque'])){
+
+                              foreach($data as $element){
+                              echo $element . '<br />';
+                           }
+
+                           }
+
+                        }
+
+                           
+                        //} 
+
+
+                        if(isset($_POST["forminscription"])) {
+
+                           if(!empty($_POST["marque"]) {
+
+                              foreach($_POST["marque"] as $marquee) {
+                                 echo '<p>'.$marquee.'</p>';
+                              }
+                           }
+
+                           else {
+
+                           echo "cest la der";
+                           }
+
+                        }
+
+
+
+
+
+                           echo "toto";
+
+                        
+                          //if (isset($_POST['marque']) && is_array($_POST['marque']))
+
+                        
+
+
+
+
+
+
+                           //$id_reparateur =$bdd->lastInsertID();
+                           //echo $id_reparateur;
+
+
+                 
+
+                           while ($data = $subjectName->fetch())
+                           {
+
+                             echo  $data['id_nom']  ;
+
+                     //$insertmbr = $bdd->prepare("INSERT INTO concordance_marque_reparateur(id_marque_ref, id_reparateur_ref ) VALUES(?, ?)");
+                     $insertmbr = $bdd->prepare("INSERT INTO concordance_marque_reparateur( id_marque_ref, id_reparateur_ref) VALUES (?, ?)");
+                     $insertmbr->execute(array($data['id_nom'],$id_reparateur));
+
+                          // }
+
+                           }
+                                                                          
+                          ?>
+
+
+
+
+</tr>
 
                <tr>
                   <td></td>

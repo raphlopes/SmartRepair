@@ -324,7 +324,7 @@
                           }
 
                           while($data = mysql_fetch_array($subject)){
-                            if (isset($_POST['{$data['id_nom']}'])) {
+                            if (isset($_POST["{$data['id_nom']}"])) {
 
 
                               $insertmbr = $bdd->prepare("INSERT INTO reparateur() VALUES(?, ?, ?, ?)");
