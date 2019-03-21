@@ -371,6 +371,7 @@ if(isset($_POST['forminscription'])) {
                            
                         //} 
 
+                        /*
 
                         if(isset($_POST["forminscription"])) {
 
@@ -387,6 +388,9 @@ if(isset($_POST['forminscription'])) {
                            }
 
                         }
+
+                        */
+
 
 
 
