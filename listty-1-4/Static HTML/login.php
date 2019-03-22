@@ -36,7 +36,7 @@ if(isset($_POST['formconnexion'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Member Login - Listty</title>
+  <title>Connexion SmartRepair</title>
 
   <!-- PLUGINS CSS STYLE -->
   <link href="assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -415,7 +415,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
     <div class="row">
       <div class="center-block col-md-5 col-sm-6 col-xs-12">
         <div class="panel panel-default loginPanel">
-          <div class="panel-heading text-center">Members log in</div>
+          <div class="panel-heading text-center">Connexion utilisateurs </div>
           <div class="panel-body">
             <form method="POST" class="loginForm">
               <div class="form-group">
@@ -426,7 +426,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
               <div class="form-group">
                 <label for="userPassword">Mot de passe *</label>
                 <input type="password" name="mdpconnect" class="form-control" id="name="mdpconnect" placeholder="Mot de passe" >
-                <p class="help-block">Enter the password that accompanies your username.</p>
+                
               </div>
               <div class="form-group">
                 <button type="submit" name="formconnexion" class="btn btn-primary pull-left">Connexion</button>
@@ -440,7 +440,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
             </form>
           </div>
           <div class="panel-footer text-center">
-            <p>Not a member yet? <a href="sign-up.html" class="link">Sign up</a></p>
+            <p>Pas encore membre ? <a href="sign-up.php" class="link">S'inscrire</a></p>
           </div>
         </div>
       </div>
