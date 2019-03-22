@@ -382,78 +382,16 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       </nav>
     </div>
     </header>
-    <!-- Dashboard header -->
-    <section class="navbar-dashboard-area">
-      <nav class="navbar navbar-default lightHeader navbar-dashboard" role="navigation">
-        <div class="container">
-
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-dash">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-dash">
-            <ul class="nav navbar-nav mr0">
-              <li class="">
-                <a href="dashboard.html"><i class="fa fa-tachometer icon-dash" aria-hidden="true"></i> Dashboard</a>
-              </li>
-              <li class="dropdown singleDro active">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i> Listings <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                <ul class="dropdown-menu">
-                  <li><a href="listings.html">My Listings</a></li>
-                  <li><a href="add-listings.html">Add Listings</a></li>
-                  <li><a href="edit-listings.html">My Listings</a></li>
-                </ul>
-              </li>
-              <li class="">
-                <a href="dashboard-reviews.html" class="scrolling"><i class="fa fa-star-o icon-dash" aria-hidden="true"></i> Reviews</a>
-              </li>
-              <li class="">
-                <a href="oders.html"><i class="fa fa-cogs icon-dash" aria-hidden="true"></i> Orders</a>
-              </li>
-              <li>
-                <a href="dashboard.html#message" class="scrolling">
-                  <i class="fa fa-envelope icon-dash" aria-hidden="true"> </i>
-                  Messages</a>
-              </li>
-              <li class="">
-                <a href="profile.html"><i class="fa fa-user icon-dash" aria-hidden="true"></i> Personal Details</a>
-              </li>
-            </ul>
-            <div class="row adjustRow">
-              <div class="pull-right col-xs-12 col-sm-2">
-                <form class="navbar-form" role="search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="icon-listy icon-search-2"></i></button>
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </section>
-
-
+    
 <!-- Dashboard breadcrumb section -->
 <div class="section dashboard-breadcrumb-section bg-dark">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <h2>Submit Listings</h2>
+        <h2>Ajout de Commerce</h2>
         <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li class="active">Submit Listings</li>
+			<li><a href="index.html">Accueil</a></li>
+          <li class="active">Ajout</li>
         </ol>
       </div>
     </div>
@@ -473,16 +411,16 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 							<p>Fiche de renseignements.</p>
 							<div class="row">
 								<div class="form-group col-sm-6 col-xs-12">
-									<label for="listingTitle">Listing Title</label>
-									<input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
+									<label for="listingTitle">Titre</label>
+									<input type="text" class="form-control" id="listingTitle" placeholder="Titre">
 								</div>
 								<div class="form-group col-xs-12">
 									<label for="discribeTheListing">Description</label>
-									<textarea class="form-control" rows="3" placeholder="Discribe the listing"></textarea>
+									<textarea class="form-control" rows="3" placeholder="Décrire"></textarea>
 								</div>
 								<div class="form-group col-xs-12">
 									<label for="addTags">Tags</label>
-									<input type="text" class="form-control" id="addTags" placeholder="Add Tags">
+									<input type="text" class="form-control" id="addTags" placeholder="Tags">
 								</div>
 							</div>
 						</div>
@@ -498,7 +436,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 								</div>
 								<div class="form-group col-sm-6 col-xs-12">
 									<label for="listingAddress">Adresse</label>
-									<input type="text" class="form-control" id="listingAddress" placeholder="Type Location">
+									<input type="text" class="form-control" id="listingAddress" placeholder="Location">
 								</div>
 
 								<div class="form-group col-sm-6 col-sm-push-6 col-xs-12">
@@ -510,7 +448,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 
 								<div class="form-group col-sm-6 col-sm-pull-6 col-xs-12">
 									<label for="listingPhone">Téléphone</label>
-									<input type="text" class="form-control" id="listingPhone" placeholder="546 - 545 - 2546">
+									<input type="text" class="form-control" id="listingPhone" placeholder="">
 								</div>
 					
 								<div class="form-group col-sm-6 col-sm-pull-6 col-xs-12">
@@ -563,7 +501,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 
 								<div class="form-group col-md-4 col-sm-6 col-xs-12">
 									<label for="sundayTime">Dimanche</label>
-									<input type="text" class="form-control" id="sundayTime" placeholder="Closed">
+									<input type="text" class="form-control" id="sundayTime" placeholder="Fermé">
 								</div>
 							</div>
 						</div>
@@ -583,7 +521,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <p>Copyright © 2016. All Rights Reserved</p>
+            <p>SmartRepair @2019. </p>
           </div>
         </div>
       </div>
