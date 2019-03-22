@@ -31,6 +31,10 @@ class GmapApi {
                 
             }
         }
+
+
+
+
         return $data;
     }
 
@@ -44,7 +48,21 @@ class GmapApi {
 <?php
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 
+
+
 if(isset($_POST['forminscription'])) {
+
+
+                   if(isset($_POST['paiement'])){
+
+                      foreach($_POST['paiement'] as $valeur)
+                      {
+                         echo "<br/>";
+                         echo "La checkbox $valeur a été <br>";
+                      }
+                
+
+              }
 
       //code du captcha api google
 
@@ -71,25 +89,36 @@ if(isset($_POST['forminscription'])) {
    $site_internet = htmlspecialchars($_POST['site_internet']);
    $numero_telephone = htmlspecialchars($_POST['numero_telephone']);
    $adresse = htmlspecialchars($_POST['adresse']);
+   $heure_semaine = htmlspecialchars($_POST['heure_semaine']);
+   $heure_samedi = htmlspecialchars($_POST['heure_samedi']);
+   $heure_dimanche = htmlspecialchars($_POST['heure_dimanche']);
    $mail_user = htmlspecialchars($_POST['mail_user']);
    $mail_user_confirm = htmlspecialchars($_POST['mail_user_confirm']);
    $mdp = sha1($_POST['mdp']);
    $mdp2 = sha1($_POST['mdp2']);
-   if(!empty($_POST['nom']) AND !empty($_POST['description']) AND !empty($_POST['site_internet']) AND !empty($_POST['numero_telephone']) AND !empty($_POST['mail_user']) AND !empty($_POST['mail_user_confirm']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']) AND !empty($_POST['adresse'])) {
+
+
+
+   if(!empty($_POST['nom']) AND !empty($_POST['description']) AND !empty($_POST['site_internet']) AND !empty($_POST['numero_telephone']) AND !empty($_POST['mail_user']) AND !empty($_POST['mail_user_confirm']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']) AND !empty($_POST['adresse']) ) {
 
       $nomlength = strlen($nom);
       $descriptionlength = strlen($description);
       $site_internetlength = strlen($site_internet);
       $numero_telephonelength = strlen($numero_telephone);
       $adresselength = strlen($numero_telephone);
+      //$heure_semaine = strlen($heure_semaine);
+      //$heure_samedi = strlen($heure_samedi);
+      //$heure_dimanche = strlen($heure_dimanche);
+
+
 
 
 
       if($nomlength <= 255) {
          if($descriptionlength <= 255) {
-         if($site_internetlength <= 255) {
+          if($site_internetlength <= 255) {
             if($adresselength <= 255){
-         if($numero_telephonelength <= 255){
+              if($numero_telephonelength <= 255){
 
          if($mail_user == $mail_user_confirm) {
             if(filter_var($mail_user, FILTER_VALIDATE_EMAIL)) {
@@ -100,6 +129,45 @@ if(isset($_POST['forminscription'])) {
                   if($mdp == $mdp2) {
 
                      if(1==1){
+
+                      // les heures d'ouvertures 
+
+                      if (empty($_POST['heure_semaine'])){
+
+                        $heure_semaine = "Fermé";
+                      }
+
+                      if (empty($_POST['heure_samedi'])){
+
+                        $heure_samedi = "Fermé";
+                      }
+
+
+                      if (empty($_POST['heure_dimanche'])){
+
+                        $heure_dimanche = "Fermé";
+                      }
+
+
+
+                      // code pour les cases de paiement 
+
+                      if(isset($_POST['paiement'])){
+                      echo "case coché";
+
+                      foreach($_POST['paiement'] as $valeur)
+                      {
+                         echo "<br/>";
+                         echo "La checkbox $valeur a été cochée<br>";
+                      }
+                
+
+                      }
+
+
+
+
+
 
 
                      $data = GmapApi::geocodeAddress($_POST['adresse']);
@@ -118,7 +186,7 @@ if(isset($_POST['forminscription'])) {
 
                      $insertmbr = $bdd->prepare("INSERT INTO adresse(adresse, type, lat, lng) VALUES(?, ?, ?, ?)");
                      //$insertmbr = $bdd->prepare("INSERT INTO adresse("caca", "caca", 1, 1)";
-                     $insertmbr->execute(array($data['address'],$type, $data['lat'] ,$data['lat']));
+                     $insertmbr->execute(array($data['address'],$type, $data['lat'] ,$data['lng']));
                      //$insertmbr->execute(array($data['address'], $type, $data['lat'],$data['lng']));
 
                         }catch (Exception $e)
@@ -136,9 +204,60 @@ if(isset($_POST['forminscription'])) {
                      echo '<li>'.$bdd->lastInsertID() .'</li>';
 
 
+                              //inscription dans la table de concordance
 
-                     $insertmbr = $bdd->prepare("INSERT INTO reparateur(nom, id_adresse_ref, description, moyen_paiement_cash, moyen_paiement_carte, moyen_paiement_cheque, note, site_internet, mail, mot_de_passe, numero_telephone) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                     $insertmbr->execute(array($nom, $adresse_info, $description, "1", "1", "1","0", $site_internet, $mail_user, $mdp, "0"));
+                              foreach($_POST["marque"] as $marquee) {
+
+                                $insertmbr = $bdd->prepare("INSERT INTO concordance_marque_reparateur(id_marque_ref, id_reparateur_ref ) VALUES(?, ?)");
+                                $insertmbr->execute(array($marquee ,$adresse_info));
+                                 
+                              }
+
+
+
+                              if(isset($_POST['paiement1'])){
+
+                                $paiement1 = "1";
+                              } else {
+
+                                 $paiement1 = "0";
+                              }
+
+
+                              if(isset($_POST['paiement2'])){
+
+                                $paiement2 = "1";
+                              } else {
+
+                                 $paiement2 = "0";
+                              }
+
+
+                              if(isset($_POST['paiement3'])){
+
+                                $paiement3 = "1";
+                              } else {
+
+                                 $paiement3 = "0";
+                              }
+                            
+                                
+
+
+ 
+
+                                
+                                
+
+                            
+
+                            
+
+
+
+
+                     $insertmbr = $bdd->prepare("INSERT INTO reparateur(nom, id_adresse_ref, description, moyen_paiement_cash, moyen_paiement_carte, moyen_paiement_cheque, note, site_internet, mail, mot_de_passe, numero_telephone, heure_ouverture_semaine, heure_ouverture_samedi, heure_ouverture_dimanche) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                     $insertmbr->execute(array($nom, $adresse_info, $description, $paiement1, $paiement2, $paiement3, "0", $site_internet, $mail_user, $mdp, $numero_telephone, $heure_semaine, $heure_samedi, $heure_dimanche) );
                      $msg = "Vous avez bien été enregistré. Un email de confirmation vous a été envoyé ! <a href=\"connexion.php\">Se connecter</a>";
 
 
@@ -176,7 +295,7 @@ if(isset($_POST['forminscription'])) {
                      
                         */
 
-               }else {
+               } else {
                   $msg = "Veuillez valider votre captcha";
                }
 
@@ -276,6 +395,37 @@ if(isset($_POST['forminscription'])) {
 
                <tr>
                   <td align="right">
+                     <label for="heure_semaine">heure d'ouverture semaine :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="09h00 - 20h00" id="heure_semaine" name="heure_semaine" value="<?php if(isset($heure_semaine)) { echo $heure_semaine; } ?>" />
+                  </td>
+               </tr>
+
+
+               <tr>
+                  <td align="right">
+                     <label for="heure_samedi">heure d'ouverture samedi :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="09h00 - 20h00" id="heure_samedi" name="heure_samedi" value="<?php if(isset($heure_samedi)) { echo $heure_samedi; } ?>" />
+                  </td>
+               </tr>
+
+               <tr>
+                  <td align="right">
+                     <label for="heure_dimanche">heure d'ouverture dimanche :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="09h00 - 20h00" id="heure_dimanche" name="heure_dimanche" value="<?php if(isset($heure_dimanche)) { echo $heure_dimanche; } ?>" />
+                  </td>
+               </tr>
+
+
+               
+
+               <tr>
+                  <td align="right">
                      <label for="mail">Mail :</label>
                   </td>
                   <td>
@@ -317,7 +467,13 @@ if(isset($_POST['forminscription'])) {
                      <br/>
                   </td>
                </tr>
-<tr>
+
+               <input type="checkbox" name="paiement1" value="cb" />Paiement par C.B<br>
+               <input type="checkbox" name="paiement2" value="espece" />Paiement par Espèce<br>
+               <input type="checkbox" name="paiement3" value="cheque" />Paiement par chèque<br>
+
+
+
  
 
  
@@ -325,6 +481,9 @@ if(isset($_POST['forminscription'])) {
 
 
                       <?php
+
+
+                      
 
 
                       try
@@ -371,32 +530,35 @@ if(isset($_POST['forminscription'])) {
                            
                         //} 
 
-                        /*
-
+                      
+                         $agreg=false;
                         if(isset($_POST["forminscription"])) {
 
-                           if(!empty($_POST["marque"]) {
+                           if(!empty($_POST["marque"])) {
 
                               foreach($_POST["marque"] as $marquee) {
-                                 echo '<p>'.$marquee.'</p>';
+                                 //echo '<p>'.$marquee.'</p>';
+                                  $agreg=true;
                               }
                            }
 
                            else {
 
-                           echo "cest la der";
+                           echo "aucune case cochée";
+                            $agreg= false;
                            }
 
                         }
 
-                        */
+
+                      
+             
 
 
 
 
 
 
-                           echo "toto";
 
                         
                           //if (isset($_POST['marque']) && is_array($_POST['marque']))
@@ -412,7 +574,8 @@ if(isset($_POST['forminscription'])) {
                            //echo $id_reparateur;
 
 
-                 
+                          /*
+
 
                            while ($data = $subjectName->fetch())
                            {
@@ -426,6 +589,9 @@ if(isset($_POST['forminscription'])) {
                           // }
 
                            }
+
+
+                           */
                                                                           
                           ?>
 
