@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<?php
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
+
+if(isset($_POST['poster'])) {
+   $accueil = htmlspecialchars($_POST['accueil']);
+   $rapport = htmlspecialchars($_POST['rapport']);
+   $temps = htmlspecialchars($_POST['temps']);
+   $fiabilite = htmlspecialchars($_POST['fiabilite']);
+   $commentaire = htmlspecialchars($_POST['commentaire']);
+   if(!empty($_POST['accueil']) AND !empty($_POST['rapport']) AND !empty($_POST['temps']) AND !empty($_POST['fiabilite']) AND !empty($_POST['commentaire']) )
+   {
+	   $insertmbr = $bdd->prepare("INSERT INTO note(prix, amabilite, temps, fiabilite, description) VALUES(?, ?, ?, ?, ?)");
+       $insertmbr->execute(array($rapport, $accueil, $temps, $fiabilite, $commentaire));
+   }
+	echo "veuillez remplir tout le formulaire";
+}
+?>
+
 <html lang="en">
 <head>
 
@@ -291,44 +309,151 @@
 						</ul>
 					</div>
 					<div class="detailsInfoBox">
-						<h3>Reviews</h3>
+						<h3>Avis</h3>
+						<?php
+      $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
+      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref = '9'"; // à modifier en fonction de la page sur laquelle on est co 
+      $stmt=$bdd->prepare($sql);
+      $stmt->execute();
+      $list=$stmt->fetchALL();
+      foreach($list as $value)
+      {
+
+?>
+						
 						<div class="media media-comment">
+							<?php
+							 $sql2="SELECT * FROM utilisateur where id=" .$value['id_utilisateur_ref'];
+							  $stmt2=$bdd->prepare($sql2);
+							  $stmt2->execute();
+							  $list2=$stmt2->fetchALL();
+		  
+		  					  $sql3="SELECT * FROM note where id_note=" .$value['id_note_ref'];
+							  $stmt3=$bdd->prepare($sql3);
+							  $stmt3->execute();
+							  $list3=$stmt3->fetchALL();
+							 ?>
 							<div class="media-left">
-							<img src="assets/img/listing/list-user-1.jpg" class="media-object img-circle" alt="Image User">
+							<img src="<?php echo $list2[0][5];?>" class="media-object img-circle" alt="Image User">
 							</div>
+							
 							<div class="media-body">
-								<h4 class="media-heading">Jessica Brown</h4>
-								<ul class="list-inline rating">
-									<li><i class="fa fa-star" aria-hidden="true"></i></li>
-									<li><i class="fa fa-star" aria-hidden="true"></i></li>
-									<li><i class="fa fa-star" aria-hidden="true"></i></li>
-									<li><i class="fa fa-star" aria-hidden="true"></i></li>
-									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<h4 class="media-heading">
+									<?php echo $list2[0][1];echo "  "; echo $list2[0][2]; ?>
+								</h4>
+								<h5 class="text-right"> <?php echo $list3[0][6];?> </h5>
+								<ul>
+									<li>Rapport qualité/prix: <?php echo $list3[0][1] ?>/10  </li>
+									<li>Accueil: <?php echo $list3[0][2] ?>/10  </li>
+									<li>Temps de prise en charge: <?php echo $list3[0][3] ?>/10  </li>
+									<li>Fiabilité : <?php echo $list3[0][4] ?>/10  </li>
 								</ul>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
-								totam rem ape riam,</p>
+								
+							
+		  						</br>
+								<p style="font-size: 20px;"> <?php echo $list3[0][5];?> </p>
 							</div>
 						</div>
+						<hr>
+						<?php } ?>
 					</div>
+					<?php 
+						$_SESSION['id'] = "4";
+						if ($_SESSION['id'])
+						{ ?>
+			
 					<div class="detailsInfoBox">
 						<h3>Ecrire un avis </h3>
-						<form action="#">
+						<form method="POST" action="#">
 						<div class="listingReview">
-							<span>Catégories</span>
-							<ul class="list-inline rating rating-review">
-								<li> Rapport qualité/prix </li>
+							<hr>
+							<ul >
+								<li> Rapport qualité/prix 
+									
+										<div class="searchSelectboxes" >
+										<select class="select-drop" id="rapport" name="rapport">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+										</select>
+										
+									</div>
+									
+								</li>
+								<li> Accueil 
+									<div class="searchSelectboxes" >
+										<select class="select-drop" id="accueil" name="accueil">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+										</select>
+									</div>
+								</li>
+								<li> Temps de prise en charge 
+									<div class="searchSelectboxes" >
+										<select class="select-drop" id="temps"  name="temps">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+										</select>
+									</div>
+								</li>
+								<li> Fiabilité 
+									<div class="searchSelectboxes" >
+										<select class="select-drop" id="fiabilite" name="fiabilite">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+										</select>
+									</div>
+								</li>
 							</ul>
 						</div>
 							<div class="formSection formSpace">
 								<div class="form-group">
-									<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+									<textarea class="form-control" rows="3" placeholder="Comment" name="commentaire"></textarea>
 								</div>
 								<div class="form-group mb0">
-									<button type="submit" class="btn btn-primary">Poster son avis</button>
+									<button type="submit" class="btn btn-primary" name="poster">Poster son avis</button>
 								</div>
 							</div>
 						</form>
 					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
