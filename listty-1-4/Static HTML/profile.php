@@ -373,10 +373,23 @@ if(isset($_SESSION['id'])) {
 
             ?> 
             <img src="utilisateur/avatars/<?php echo $userinfo['avatar'] ; ?>" width = "150";
- height ="150"; class="img-circle" />
+            height ="150"; class="img-circle" />
             <?php
             
          }
+
+         if(empty($userinfo['avatar']))
+         {
+
+            ?> 
+            <img src="utilisateur/avatars/defaut.png<?php echo $userinfo['avatar'] ; ?>" width = "150";
+            height ="150"; class="img-circle" />
+            <?php
+            
+         }
+
+
+
          ?>
             <!--
 						<img src="assets/img/dashboard/recent-user-5.jpg" alt="Image User" class="img-circle">
