@@ -1,31 +1,4 @@
 <!DOCTYPE html>
-<?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
-
-$id_rep= $_GET['id'];
-$_SESSION['id'] = "4"; //à supprimer quand le site est op 
-
-
-if(isset($_POST['poster'])) {
-   $accueil = htmlspecialchars($_POST['accueil']);
-   $rapport = htmlspecialchars($_POST['rapport']);
-   $temps = htmlspecialchars($_POST['temps']);
-   $fiabilite = htmlspecialchars($_POST['fiabilite']);
-   $commentaire = htmlspecialchars($_POST['commentaire']);
-   //if(!empty($_POST['accueil']) AND !empty($_POST['rapport']) AND !empty($_POST['temps']) AND !empty($_POST['fiabilite']) AND !empty($_POST['commentaire']) )
-   {
-	   $insertmbr = $bdd->prepare("INSERT INTO note(prix, amabilite, temps, fiabilite, description) VALUES(?, ?, ?, ?, ?)");
-       $insertmbr->execute(array($rapport, $accueil, $temps, $fiabilite, $commentaire));
-	   
-	   $last_id = $bdd->lastInsertId();
-	   echo print_r($last_id);
-	   $insertmbr1 = $bdd->prepare("INSERT INTO concordance_note_reparateur_utilisateur(id_utilisateur_ref, id_reparateur_ref, id_note_ref) VALUES(?, ?, ?)");
-       $insertmbr1->execute(array($_SESSION['id'], $id_rep, $last_id));
-   }
-	echo "veuillez remplir tout le formulaire";
-}
-?>
-
 <html lang="en">
 <head>
 
@@ -34,7 +7,7 @@ if(isset($_POST['poster'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Listing Details Left - Listty</title>
+  <title>Category list - Listty</title>
 
   <!-- PLUGINS CSS STYLE -->
   <link href="assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -198,271 +171,261 @@ if(isset($_POST['poster'])) {
     </header>
 
 
-<!-- LISTINGS DETAILS TITLE SECTION -->
-<section class="clearfix paddingAdjustBottom" id="listing-details">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="listingTitleArea">
-					<h2>Glory Hole Doughnuts</h2>
-					<p>1150 Queen Street West Toronto <br>Ontario M6J 1J3, Canada</p>
-					<div class="listingReview">
-						<ul class="list-inline rating">
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-						</ul>
-						<span>( 5 Reviews )</span>
-						<ul class="list-inline captionItem">
-							<li><i class="fa fa-heart-o" aria-hidden="true"></i> 10 k</li>
-						</ul>
-						<a href="dashboard-reviews.html" class="btn btn-primary">Write a review</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- MAP SECTION -->
+<section class="clearfix p0">
+	<div id="map-canvas"></div>
 </section>
 
-<!-- LISTINGS DETAILS IMAGE SECTION -->
-<section class="clearfix paddingAdjustTopBottom">
-	<ul class="list-inline listingImage">
-		<li><img src="assets/img/listing/listing-details-1.jpg" alt="Image Listing" class="img-responsive"></li>
-		<li><img src="assets/img/listing/listing-details-2.jpg" alt="Image Listing" class="img-responsive"></li>
-		<li><img src="assets/img/listing/listing-details-3.jpg" alt="Image Listing" class="img-responsive"></li>
-		<li><img src="assets/img/listing/listing-details-4.jpg" alt="Image Listing" class="img-responsive"></li>
-	</ul>
-</section>
-
-<!-- LISTINGS DETAILS INFO SECTION -->
-<section class="clearfix paddingAdjustTop">
+<!-- CATEGORY LIST SECTION -->
+<section class="clerfix">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-xs-12">
-				<div class="clearfix map-sidebar map-right">
-					<div id="map" style="position:relative; margin: 0;padding: 0;height: 538px; max-width: none;"></div>
-				</div>
-				<div class="listSidebar">
-					<h3>Location</h3>
-					<div class="contactInfo">
-						<ul class="list-unstyled list-address">
-							<li>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>
-								16/14 Babor Road, Mohammad pur <br> Dhaka, Bangladesh
-							</li>
-							<li>
-								<i class="fa fa-phone" aria-hidden="true"></i>
-								+55 654 545 122 <br> +55 654 545 123
-							</li>
-							<li>
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<a href="#">info @example.com</a> <a href="#">info@startravelbangladesh.com</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="listSidebar">
-					<h3>Opening Hours</h3>
-					<ul class="list-unstyled sidebarList">
-						<li>
-							<span class="pull-left">Monday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Tuesday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Wednesday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Thrusday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Friday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Saturday</span>
-							<span class="pull-right"><a href="#">Closed</a></span>
-						</li>
-						<li>
-							<span class="pull-left">Sunday</span>
-							<span class="pull-right"><a href="#">Closed</a></span>
-						</li>
+			<div class="col-sm-8 col-xs-12">
+				<div class="resultBar barSpaceAdjust">
+					<h2>We found <span>7</span> Results for you</h2>
+					<ul class="list-inline">
+						<li><a href="listing-grid-right-sidebar.html"><i class="fa fa-th" aria-hidden="true"></i></a></li>
+						<li class="active"><a href="listing-list-right-sidebar.html"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
-			</div>
-			<div class="col-sm-8 col-xs-12">
-				<div class="listDetailsInfo">
-					<div class="detailsInfoBox">
-						<h3>About This Hotel</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. </p>
-						<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est. </p>
-						<p>Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
-					</div>
-					<div class="detailsInfoBox">
-						<h3>Features</h3>
-						<ul class="list-inline featuresItems">
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Wi-Fi</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Street Parking</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Alcohol</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vegetarian</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Reservations</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Pets Friendly</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Accept Credit Card</li>
-						</ul>
-					</div>
-					<div class="detailsInfoBox">
-						<h3>Avis</h3>
-						<?php
-      $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
-      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref = '9'"; // à modifier en fonction de la page sur laquelle on est co 
-      $stmt=$bdd->prepare($sql);
-      $stmt->execute();
-      $list=$stmt->fetchALL();
-      foreach($list as $value)
-      {
-
-?>
-						
-						<div class="media media-comment">
-							<?php
-							 $sql2="SELECT * FROM utilisateur where id=" .$value['id_utilisateur_ref'];
-							  $stmt2=$bdd->prepare($sql2);
-							  $stmt2->execute();
-							  $list2=$stmt2->fetchALL();
-		  
-		  					  $sql3="SELECT * FROM note where id_note=" .$value['id_note_ref'];
-							  $stmt3=$bdd->prepare($sql3);
-							  $stmt3->execute();
-							  $list3=$stmt3->fetchALL();
-							 ?>
-							<div class="media-left">
-							<img src="<?php echo $list2[0][5];?>" class="media-object img-circle" alt="Image User">
-							</div>
-							
-							<div class="media-body">
-								<h4 class="media-heading">
-									<?php echo $list2[0][1];echo "  "; echo $list2[0][2]; ?>
-								</h4>
-								<h5 class="text-right"> <?php echo $list3[0][6];?> </h5>
-								<ul>
-									<li>Rapport qualité/prix: <?php echo $list3[0][1] ?>/10  </li>
-									<li>Accueil: <?php echo $list3[0][2] ?>/10  </li>
-									<li>Temps de prise en charge: <?php echo $list3[0][3] ?>/10  </li>
-									<li>Fiabilité : <?php echo $list3[0][4] ?>/10  </li>
-								</ul>
-								
-							
-		  						</br>
-								<p style="font-size: 20px;"> <?php echo $list3[0][5];?> </p>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-4.jpg" alt="Image category" class="img-responsive img-rounded">
+								<span class="label label-primary">Verified</span>
 							</div>
 						</div>
-						<hr>
-						<?php } ?>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								</ul>
+								<h2><a href="listing-details-right.html" style="color: #222222">Think Coffee</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 10 k</span></h2>
+								<p>215 Terry Lane <span class="placeName"> New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Eat & Drink</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<?php 
-						if ($_SESSION['id'])
-						{ ?>
-			
-					<div class="detailsInfoBox">
-						<h3>Ecrire un avis </h3>
-						<form method="POST" action="#">
-						<div class="listingReview">
-							<hr>
-							<ul >
-								<li> Rapport qualité/prix 
-									
-										<div class="searchSelectboxes" >
-										<select class="select-drop" id="rapport" name="rapport">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-										
-									</div>
-									
-								</li>
-								<li> Accueil 
-									<div class="searchSelectboxes" >
-										<select class="select-drop" id="accueil" name="accueil">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
-								</li>
-								<li> Temps de prise en charge 
-									<div class="searchSelectboxes" >
-										<select class="select-drop" id="temps"  name="temps">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
-								</li>
-								<li> Fiabilité 
-									<div class="searchSelectboxes" >
-										<select class="select-drop" id="fiabilite" name="fiabilite">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
-								</li>
+				</div>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-5.jpg" alt="Image category" class="img-responsive img-rounded">
+								<span class="label label-primary">Verified</span>
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								</ul>
+								<h2><a href="listing-details-right.html" style="color: #222222">Burger House</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 9.2 k</span></h2>
+								<p>2726 Shinn Street <span class="placeName">New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Eat & Drink</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-10.jpg" alt="Image category" class="img-responsive img-rounded">
+								<span class="label label-primary">Verified</span>
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								</ul>
+								<h2><a href="listing-details-right.html" style="color: #222222">Tom's Restaurant</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 9.7 k</span></h2>
+								<p>964 School Street <span class="placeName"> New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Eat & Drink</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-7.jpg" alt="Image category" class="img-responsive img-rounded">
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								</ul>
+								<h2><a href="listing-details-right.html" style="color: #222222">Sticky Band</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 596 </span></h2>
+								<p>Bishop Avenue <span class="placeName">New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Hotel</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-8.jpg" alt="Image category" class="img-responsive img-rounded">
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								</ul>
+								<h2><a href="listing-details-right.html" style="color: #222222">Hotel Govendor</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 5 k</span></h2>
+								<p> 778 Country Street <span class="placeName">New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Hotel</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-9.jpg" alt="Image category" class="img-responsive img-rounded">
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<h2><a href="listing-details-right.html" style="color: #222222">The Mayfair Hotel</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 3k</span></h2>
+								<p>242 W 49th St, <span class="placeName">New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Hotel,</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="listContent">
+					<div class="row">
+						<div class="col-sm-5 col-xs-12">
+							<div class="categoryImage">
+								<img src="assets/img/listing/listing-10.jpg" alt="Image category" class="img-responsive img-rounded">
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-12">
+							<div class="categoryDetails">
+								<h2><a href="listing-details-right.html" style="color: #222222">Water Grill</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 7.3 k</span></h2>
+								<p>131 Union Square <span class="placeName">New York</span></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
+								<ul class="list-inline list-tag">
+									<li><a href="listings-half-screen-map-list.html">Eat & Drink</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="paginationCommon blogPagination categoryPagination">
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+								</a>
+							</li>
+							<li class="active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="col-sm-4 col-xs-12">
+				<div class="sidebarInner sidebarCategory">
+					<div class="panel panel-default">
+						<div class="panel-heading">Find Location</div>
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="What are you looking for?" aria-describedby="basic-addon2">
+							<a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="sidebarInner sidebarCategory">
+					<div class="panel panel-default">
+						<div class="panel-heading">Filter by Area</div>
+						<div class="panel-body">
+							<ul class="list-unstyle categoryList">
+								<li><a href="#">Dhaka</a></li>
+								<li><a href="#">Chittagong</a></li>
+								<li><a href="#">Rajshahi</a></li>
+								<li><a href="#">Khulna</a></li>
+								<li><a href="#">Barisal</a></li>
+								<li><a href="#">Sylhet</a></li>
+								<li><a href="#">Rangpure</a></li>
+								<li><a href="#">Gazipure</a></li>
+								<li><a href="#">Pabna</a></li>
 							</ul>
 						</div>
-							<div class="formSection formSpace">
-								<div class="form-group">
-									<textarea class="form-control" rows="3" placeholder="Comment" name="commentaire"></textarea>
-								</div>
-								<div class="form-group mb0">
-									<button type="submit" class="btn btn-primary" name="poster">Poster son avis</button>
-									<option value="10"><?php print_r($_POST)?></option>
-								</div>
-							</div>
-						</form>
 					</div>
-					<?php } ?>
+				</div>
+				<div class="sidebarInner sidebarCategory">
+					<div class="panel panel-default">
+						<div class="panel-heading">Related Categories</div>
+						<div class="panel-body">
+							<ul class="list-unstyle categoryList">
+								<li><a href="#">Fast food</a></li>
+								<li><a href="#">Chinese restaurants</a></li>
+								<li><a href="#">Creole restaurants</a></li>
+								<li><a href="#">Seafood</a></li>
+								<li><a href="#">Thai restaurants</a></li>
+								<li><a href="#">Street food</a></li>
+								<li><a href="#">Japanese restaurants</a></li>
+								<li><a href="#">Greek restaurants</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -2,9 +2,9 @@
 //Include database configuration file
 include('dbConfig.php');
 
-if(isset($_POST["marque_id"]) && !empty($_POST["marque_id"])){
+if(isset($_POST["marque_name"]) && !empty($_POST["marque_name"])){
     //Get all modele data
-    $query = $db->query("SELECT * FROM modele WHERE marque_id = ".$_POST['marque_id']." ORDER BY modele_name ASC");
+    $query = $db->query("SELECT * FROM modele WHERE id_marque_ref = ".$_POST['marque_name']." ");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
@@ -13,7 +13,7 @@ if(isset($_POST["marque_id"]) && !empty($_POST["marque_id"])){
     if($rowCount > 0){
         echo '<option value="">Select modele</option>';
         while($row = $query->fetch_assoc()){ 
-            echo '<option value="'.$row['modele_id'].'">'.$row['modele_name'].'</option>';
+            echo '<option value="'.$row['id_modele'].'">'.$row['modele_name'].'</option>';
         }
     }else{
         echo '<option value="">modele not available</option>';

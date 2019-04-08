@@ -3,7 +3,7 @@
 $dbHost = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
-$dbName = 'telephone';
+$dbName = 'smartrepair';
 
 //Connect and select the database
 $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);

@@ -1,31 +1,4 @@
 <!DOCTYPE html>
-<?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
-
-$id_rep= $_GET['id'];
-$_SESSION['id'] = "4"; //à supprimer quand le site est op 
-
-
-if(isset($_POST['poster'])) {
-   $accueil = htmlspecialchars($_POST['accueil']);
-   $rapport = htmlspecialchars($_POST['rapport']);
-   $temps = htmlspecialchars($_POST['temps']);
-   $fiabilite = htmlspecialchars($_POST['fiabilite']);
-   $commentaire = htmlspecialchars($_POST['commentaire']);
-   //if(!empty($_POST['accueil']) AND !empty($_POST['rapport']) AND !empty($_POST['temps']) AND !empty($_POST['fiabilite']) AND !empty($_POST['commentaire']) )
-   {
-	   $insertmbr = $bdd->prepare("INSERT INTO note(prix, amabilite, temps, fiabilite, description) VALUES(?, ?, ?, ?, ?)");
-       $insertmbr->execute(array($rapport, $accueil, $temps, $fiabilite, $commentaire));
-	   
-	   $last_id = $bdd->lastInsertId();
-	   echo print_r($last_id);
-	   $insertmbr1 = $bdd->prepare("INSERT INTO concordance_note_reparateur_utilisateur(id_utilisateur_ref, id_reparateur_ref, id_note_ref) VALUES(?, ?, ?)");
-       $insertmbr1->execute(array($_SESSION['id'], $id_rep, $last_id));
-   }
-	echo "veuillez remplir tout le formulaire";
-}
-?>
-
 <html lang="en">
 <head>
 
@@ -34,7 +7,7 @@ if(isset($_POST['poster'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Listing Details Left - Listty</title>
+  <title>Listing Details - Listty</title>
 
   <!-- PLUGINS CSS STYLE -->
   <link href="assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -240,6 +213,105 @@ if(isset($_POST['poster'])) {
 <section class="clearfix paddingAdjustTop">
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-8 col-xs-12">
+				<div class="listDetailsInfo">
+					<div class="detailsInfoBox">
+						<h3>About This Hotel</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. </p>
+						<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est. </p>
+						<p>Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
+					</div>
+					<div class="detailsInfoBox">
+						<h3>Features</h3>
+						<ul class="list-inline featuresItems">
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Wi-Fi</li>
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Street Parking</li>
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Alcohol</li>
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vegetarian</li>
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Reservations</li>
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Pets Friendly</li>
+							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Accept Credit Card</li>
+						</ul>
+					</div>
+					<div class="detailsInfoBox">
+						<h3>Reviews (3)</h3>
+						<div class="media media-comment">
+							<div class="media-left">
+							<img src="assets/img/listing/list-user-1.jpg" class="media-object img-circle" alt="Image User">
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Jessica Brown</h4>
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								</ul>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
+								totam rem ape riam,</p>
+							</div>
+						</div>
+						<div class="media media-comment">
+							<div class="media-left">
+							<img src="assets/img/listing/list-user-2.jpg" class="media-object img-circle" alt="Image User">
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Jessica Brown</h4>
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								</ul>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
+								totam rem ape riam,</p>
+							</div>
+						</div>
+						<div class="media media-comment">
+							<div class="media-left">
+							<img src="assets/img/listing/list-user-3.jpg" class="media-object img-circle" alt="Image User">
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Jessica Brown</h4>
+								<ul class="list-inline rating">
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+									<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								</ul>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
+								totam rem ape riam,</p>
+							</div>
+						</div>
+					</div>
+					<div class="detailsInfoBox">
+						<h3>Write A Review </h3>
+						<div class="listingReview">
+							<span>( 5 Reviews )</span>
+							<ul class="list-inline rating rating-review">
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+							</ul>
+						</div>
+						<form action="#">
+							<div class="formSection formSpace">
+								<div class="form-group">
+									<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+								</div>
+								<div class="form-group mb0">
+									<button type="submit" class="btn btn-primary">Send Review</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 			<div class="col-sm-4 col-xs-12">
 				<div class="clearfix map-sidebar map-right">
 					<div id="map" style="position:relative; margin: 0;padding: 0;height: 538px; max-width: none;"></div>
@@ -295,174 +367,6 @@ if(isset($_POST['poster'])) {
 							<span class="pull-right"><a href="#">Closed</a></span>
 						</li>
 					</ul>
-				</div>
-			</div>
-			<div class="col-sm-8 col-xs-12">
-				<div class="listDetailsInfo">
-					<div class="detailsInfoBox">
-						<h3>About This Hotel</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. </p>
-						<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est. </p>
-						<p>Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
-					</div>
-					<div class="detailsInfoBox">
-						<h3>Features</h3>
-						<ul class="list-inline featuresItems">
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Wi-Fi</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Street Parking</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Alcohol</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vegetarian</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Reservations</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Pets Friendly</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Accept Credit Card</li>
-						</ul>
-					</div>
-					<div class="detailsInfoBox">
-						<h3>Avis</h3>
-						<?php
-      $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
-      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref = '9'"; // à modifier en fonction de la page sur laquelle on est co 
-      $stmt=$bdd->prepare($sql);
-      $stmt->execute();
-      $list=$stmt->fetchALL();
-      foreach($list as $value)
-      {
-
-?>
-						
-						<div class="media media-comment">
-							<?php
-							 $sql2="SELECT * FROM utilisateur where id=" .$value['id_utilisateur_ref'];
-							  $stmt2=$bdd->prepare($sql2);
-							  $stmt2->execute();
-							  $list2=$stmt2->fetchALL();
-		  
-		  					  $sql3="SELECT * FROM note where id_note=" .$value['id_note_ref'];
-							  $stmt3=$bdd->prepare($sql3);
-							  $stmt3->execute();
-							  $list3=$stmt3->fetchALL();
-							 ?>
-							<div class="media-left">
-							<img src="<?php echo $list2[0][5];?>" class="media-object img-circle" alt="Image User">
-							</div>
-							
-							<div class="media-body">
-								<h4 class="media-heading">
-									<?php echo $list2[0][1];echo "  "; echo $list2[0][2]; ?>
-								</h4>
-								<h5 class="text-right"> <?php echo $list3[0][6];?> </h5>
-								<ul>
-									<li>Rapport qualité/prix: <?php echo $list3[0][1] ?>/10  </li>
-									<li>Accueil: <?php echo $list3[0][2] ?>/10  </li>
-									<li>Temps de prise en charge: <?php echo $list3[0][3] ?>/10  </li>
-									<li>Fiabilité : <?php echo $list3[0][4] ?>/10  </li>
-								</ul>
-								
-							
-		  						</br>
-								<p style="font-size: 20px;"> <?php echo $list3[0][5];?> </p>
-							</div>
-						</div>
-						<hr>
-						<?php } ?>
-					</div>
-					<?php 
-						if ($_SESSION['id'])
-						{ ?>
-			
-					<div class="detailsInfoBox">
-						<h3>Ecrire un avis </h3>
-						<form method="POST" action="#">
-						<div class="listingReview">
-							<hr>
-							<ul >
-								<li> Rapport qualité/prix 
-									
-										<div class="searchSelectboxes" >
-										<select class="select-drop" id="rapport" name="rapport">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-										
-									</div>
-									
-								</li>
-								<li> Accueil 
-									<div class="searchSelectboxes" >
-										<select class="select-drop" id="accueil" name="accueil">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
-								</li>
-								<li> Temps de prise en charge 
-									<div class="searchSelectboxes" >
-										<select class="select-drop" id="temps"  name="temps">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
-								</li>
-								<li> Fiabilité 
-									<div class="searchSelectboxes" >
-										<select class="select-drop" id="fiabilite" name="fiabilite">
-											<option value="0">0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
-								</li>
-							</ul>
-						</div>
-							<div class="formSection formSpace">
-								<div class="form-group">
-									<textarea class="form-control" rows="3" placeholder="Comment" name="commentaire"></textarea>
-								</div>
-								<div class="form-group mb0">
-									<button type="submit" class="btn btn-primary" name="poster">Poster son avis</button>
-									<option value="10"><?php print_r($_POST)?></option>
-								</div>
-							</div>
-						</form>
-					</div>
-					<?php } ?>
 				</div>
 			</div>
 		</div>
