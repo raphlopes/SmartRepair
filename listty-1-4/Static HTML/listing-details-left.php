@@ -311,24 +311,20 @@
 						</div>
 					</div>
 					<div class="detailsInfoBox">
-						<h3>Write A Review </h3>
+						<h3>Ecrire un avis </h3>
+						<form action="#">
 						<div class="listingReview">
-							<span>( 5 Reviews )</span>
+							<span>Catégories</span>
 							<ul class="list-inline rating rating-review">
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li> Rapport qualité/prix </li>
 							</ul>
 						</div>
-						<form action="#">
 							<div class="formSection formSpace">
 								<div class="form-group">
 									<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
 								</div>
 								<div class="form-group mb0">
-									<button type="submit" class="btn btn-primary">Send Review</button>
+									<button type="submit" class="btn btn-primary">Poster son avis</button>
 								</div>
 							</div>
 						</form>
