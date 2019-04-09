@@ -12,10 +12,10 @@ if(isset($_POST['formconnexion'])) {
       $userexist = $requser->rowCount();
       if($userexist == 1) {
          $userinfo = $requser->fetch();
-         $_SESSION['id'] = $userinfo['id'];
+         $_SESSION['idutilisateur'] = $userinfo['id'];
          //$_SESSION['pseudo'] = $userinfo['pseudo'];
          $_SESSION['mail'] = $userinfo['mail'];
-         header("Location: profile.php?id=".$_SESSION['id']);
+         header("Location: profile.php?idutilisateur=".$_SESSION['idutilisateur']);
       } else {
          $erreur = "Mauvais mail ou mot de passe !";
       }
