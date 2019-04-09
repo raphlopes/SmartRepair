@@ -353,10 +353,10 @@ if(isset($_POST['poster'])) {
 								</h4>
 								<h5 class="text-right"> <?php echo $list3[0][6];?> </h5>
 								<ul>
-									<li>Rapport qualité/prix: <?php echo $list3[0][1] ?>/10  </li>
-									<li>Accueil: <?php echo $list3[0][2] ?>/10  </li>
-									<li>Temps de prise en charge: <?php echo $list3[0][3] ?>/10  </li>
-									<li>Fiabilité : <?php echo $list3[0][4] ?>/10  </li>
+									<li>Rapport qualité/prix: <?php echo $list3[0][1] ?>/5  </li>
+									<li>Accueil: <?php echo $list3[0][2] ?>/5  </li>
+									<li>Temps de prise en charge: <?php echo $list3[0][3] ?>/5  </li>
+									<li>Fiabilité : <?php echo $list3[0][4] ?>/5  </li>
 								</ul>
 								
 							
@@ -387,11 +387,6 @@ if(isset($_POST['poster'])) {
 											<option value="3">3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
 										</select>
 										
 									</div>
@@ -406,11 +401,6 @@ if(isset($_POST['poster'])) {
 											<option value="3">3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
 										</select>
 									</div>
 								</li>
@@ -423,11 +413,6 @@ if(isset($_POST['poster'])) {
 											<option value="3">3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
 										</select>
 									</div>
 								</li>
@@ -440,11 +425,6 @@ if(isset($_POST['poster'])) {
 											<option value="3">3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
 										</select>
 									</div>
 								</li>
