@@ -3,7 +3,7 @@
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 
 $id_rep= $_GET['id'];
-$_SESSION['id'] = "4"; //à supprimer quand le site est op 
+$_SESSION['id'] = "1"; //à supprimer quand le site est op 
 
 
 if(isset($_POST['poster'])) {
@@ -12,17 +12,16 @@ if(isset($_POST['poster'])) {
    $temps = htmlspecialchars($_POST['temps']);
    $fiabilite = htmlspecialchars($_POST['fiabilite']);
    $commentaire = htmlspecialchars($_POST['commentaire']);
+   $date = date("Y/m/d");
    //if(!empty($_POST['accueil']) AND !empty($_POST['rapport']) AND !empty($_POST['temps']) AND !empty($_POST['fiabilite']) AND !empty($_POST['commentaire']) )
    {
-	   $insertmbr = $bdd->prepare("INSERT INTO note(prix, amabilite, temps, fiabilite, description) VALUES(?, ?, ?, ?, ?)");
-       $insertmbr->execute(array($rapport, $accueil, $temps, $fiabilite, $commentaire));
+	   $insertmbr = $bdd->prepare("INSERT INTO note(prix, amabilite, temps, fiabilite, description, date_poster) VALUES(?, ?, ?, ?, ?, ?)");
+       $insertmbr->execute(array($rapport, $accueil, $temps, $fiabilite, $commentaire, $date));
 	   
 	   $last_id = $bdd->lastInsertId();
-	   echo print_r($last_id);
 	   $insertmbr1 = $bdd->prepare("INSERT INTO concordance_note_reparateur_utilisateur(id_utilisateur_ref, id_reparateur_ref, id_note_ref) VALUES(?, ?, ?)");
        $insertmbr1->execute(array($_SESSION['id'], $id_rep, $last_id));
    }
-	echo "veuillez remplir tout le formulaire";
 }
 ?>
 
@@ -323,7 +322,7 @@ if(isset($_POST['poster'])) {
       $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
       $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref = '9'"; // à modifier en fonction de la page sur laquelle on est co 
+      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref = '4'"; // à modifier en fonction de la page sur laquelle on est co 
       $stmt=$bdd->prepare($sql);
       $stmt->execute();
       $list=$stmt->fetchALL();
@@ -457,7 +456,6 @@ if(isset($_POST['poster'])) {
 								</div>
 								<div class="form-group mb0">
 									<button type="submit" class="btn btn-primary" name="poster">Poster son avis</button>
-									<option value="10"><?php print_r($_POST)?></option>
 								</div>
 							</div>
 						</form>
