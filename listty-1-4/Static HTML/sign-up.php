@@ -28,7 +28,7 @@ if(isset($_POST['forminscription'])) {
 
     //code pour mettre une image par défaut 
 
-
+	
    $nom = htmlspecialchars($_POST['nom']);
    $prenom = htmlspecialchars($_POST['prenom']);
    $mail_user = htmlspecialchars($_POST['mail_user']);
