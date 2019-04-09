@@ -21,6 +21,32 @@ if(isset($_POST['poster'])) {
 	   $last_id = $bdd->lastInsertId();
 	   $insertmbr1 = $bdd->prepare("INSERT INTO concordance_note_reparateur_utilisateur(id_utilisateur_ref, id_reparateur_ref, id_note_ref) VALUES(?, ?, ?)");
        $insertmbr1->execute(array($_SESSION['id'], $id_rep, $last_id));
+	   
+	   
+	   //mettre à jour la note moyenne du réparateur
+	   //récuperer la valeur de note 
+	   $sql4="SELECT id_note_ref FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref=" .$id_rep;
+	  $stmt4=$bdd->prepare($sql4);
+	  $stmt4->execute();
+	  $list4=$stmt4->fetchALL();
+	   $sum_note = 0;
+	   $number_note = 0;
+	   $note = 0;
+	    foreach($list4 as $value)
+      	{
+	   		$sql5="SELECT * FROM note WHERE id_note=" .$value['id_note_ref'];
+		  	$stmt5=$bdd->prepare($sql5);
+		  	$stmt5->execute();
+		  	$value2=$stmt5->fetchALL();
+			
+		  	$sum_note = $sum_note + ($value2[0][1] + $value2[0][2]+ $value2[0][3]+ $value2[0][4])/4;
+		  	$number_note++;
+			
+		}
+	   $note = round($sum_note/$number_note);
+	   $insertmbr2 = $bdd->prepare("UPDATE reparateur SET note= '$note' WHERE id_reparateur= '$id_rep'");
+       $insertmbr2->execute();
+	   
    }
 }
 ?>
@@ -387,6 +413,7 @@ if(isset($_POST['poster'])) {
 											<option value="3">3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
+											<option value="5"><?php echo $note ?></option>
 										</select>
 										
 									</div>
