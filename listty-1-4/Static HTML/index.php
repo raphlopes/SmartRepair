@@ -486,11 +486,21 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 						<img src="assets/img/smartrepair.jpg" alt="Image things">
 						<div class="thingsMask">
 							<ul class="list-inline rating">
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-								<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								<?php
+								for( $i = 1; $i <= $value['note']; $i++)
+								{ ?>
+									<li><i class="fa fa-star" aria-hidden="true"></i></li> 
+								<?php
+								}
+
+								$rest = 5.0 - $value['note'];
+								for ($i = 1; $i <= $rest; $i++)
+								{
+								?>	
+									<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								<?php	
+								}
+								?>
 							</ul>
 							<a href="listing-details-left.html">
 							<h2><?php echo $value['nom']; ?><em class="fa fa-check-circle" aria-hidden="true"></em></h2>
