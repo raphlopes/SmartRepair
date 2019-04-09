@@ -552,31 +552,60 @@ if(mapId){
 
 // 2. Map for Listing Details Page
 var listingDetails = document.getElementById('listing-details');
+ 
+
+
+
+
 if (listingDetails) {
+  var id_rep = $("#mygetid").val();
+  var rep_lat = $("#mylat").val();
+  var rep_lng = $("#mylng").val();
+  
   const urlParams = new URLSearchParams(window.location.search);
-  var lat = urlParams.has('lat') ? parseFloat(urlParams.get('lat')) : 48.8534;
-  var lng = urlParams.has('lng') ? parseFloat(urlParams.get('lng')) : 2.3488;
-
   var mapIdSingle = document.getElementById('map');
-  if (mapIdSingle) {
+  if ((mapIdSingle)&&(rep_lat!=0)&&(rep_lng!=0)) {
     var marker;
-
+var markerCenter = new google.maps.LatLng(rep_lat,rep_lng);
     function initMap() {
       var map = new google.maps.Map(mapIdSingle, {
         zoom: 16,
         styles: mapStyles,
-        center: {lat: 48.8534, lng: 2.3488}
+        center: markerCenter
       });
 
       marker = new google.maps.Marker({
         map: map,
-        draggable: true,
+        draggable: false,
         animation: google.maps.Animation.BOUNCE,
-        position: { lat: lat, lng: lng }
+        position: markerCenter,
+        title:"Votre réparateur est ici !"
       });
     }
 
     initMap()
+  }
+  else{
+    var markerCenter = new google.maps.LatLng(48.8534, 2.3488);
+    function initMap() {
+      var map = new google.maps.Map(mapIdSingle, {
+        zoom: 16,
+        styles: mapStyles,
+        center: markerCenter
+      });
+
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.BOUNCE,
+        position: markerCenter,
+        title:"Pas d'adresse renseignée !"
+      });
+    }
+
+    initMap()
+
+
   }
 
 

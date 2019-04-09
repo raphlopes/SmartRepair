@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php
+<html lang="en">
+<head>
+	<?php
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 
 $id_rep= $_GET['id'];
@@ -51,8 +53,6 @@ if(isset($_POST['poster'])) {
 }
 ?>
 
-<html lang="en">
-<head>
 
   <!-- SITE TITTLE -->
   <meta charset="utf-8">
@@ -101,6 +101,18 @@ if(isset($_POST['poster'])) {
   <![endif]-->
 
 </head>
+
+<?php 
+
+
+if(isset($id_rep) AND $id_rep > 0) {
+   $getid = intval($id_rep);
+   $requser = $bdd->prepare("SELECT * FROM reparateur INNER JOIN adresse ON reparateur.id_reparateur=?");
+   $requser->execute(array($getid));
+   $userinfo = $requser->fetch();
+}
+  
+  ?>
 
 <body id="body" class="body-wrapper boxed-menu " >
 
@@ -229,8 +241,8 @@ if(isset($_POST['poster'])) {
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="listingTitleArea">
-					<h2>Glory Hole Doughnuts</h2>
-					<p>1150 Queen Street West Toronto <br>Ontario M6J 1J3, Canada</p>
+					<h2><?php echo $userinfo['nom']; ?></h2>
+					<p><?php echo $userinfo['adresse']; ?>
 					<div class="listingReview">
 						<ul class="list-inline rating">
 							<li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -254,7 +266,7 @@ if(isset($_POST['poster'])) {
 <!-- LISTINGS DETAILS IMAGE SECTION -->
 <section class="clearfix paddingAdjustTopBottom">
 	<ul class="list-inline listingImage">
-		<li><img src="assets/img/listing/listing-details-1.jpg" alt="Image Listing" class="img-responsive"></li>
+		<li><img src="reparateurs/avatars/<?php echo $userinfo['avatar']; ?>" alt="Image Listing" class="img-responsive"></li>
 		<li><img src="assets/img/listing/listing-details-2.jpg" alt="Image Listing" class="img-responsive"></li>
 		<li><img src="assets/img/listing/listing-details-3.jpg" alt="Image Listing" class="img-responsive"></li>
 		<li><img src="assets/img/listing/listing-details-4.jpg" alt="Image Listing" class="img-responsive"></li>
@@ -270,85 +282,91 @@ if(isset($_POST['poster'])) {
 					<div id="map" style="position:relative; margin: 0;padding: 0;height: 538px; max-width: none;"></div>
 				</div>
 				<div class="listSidebar">
-					<h3>Location</h3>
+					<h3>Emplacement</h3>
 					<div class="contactInfo">
 						<ul class="list-unstyled list-address">
 							<li>
 								<i class="fa fa-map-marker" aria-hidden="true"></i>
-								16/14 Babor Road, Mohammad pur <br> Dhaka, Bangladesh
+								<?php echo $userinfo['adresse'] ?>
 							</li>
 							<li>
 								<i class="fa fa-phone" aria-hidden="true"></i>
-								+55 654 545 122 <br> +55 654 545 123
+								<?php echo $userinfo['numero_telephone'] ?>
 							</li>
 							<li>
 								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<a href="#">info @example.com</a> <a href="#">info@startravelbangladesh.com</a>
+								<a href="#"><?php echo $userinfo['mail'] ?></a> <a href="#"><?php echo $userinfo['site_internet'] ?></a>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="listSidebar">
-					<h3>Opening Hours</h3>
+					<h3>Horaire D'ouverture</h3>
 					<ul class="list-unstyled sidebarList">
 						<li>
-							<span class="pull-left">Monday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
+							<span class="pull-left">Semaine</span>
+							<span class="pull-right"><?php echo $userinfo['heure_ouverture_semaine']; ?> </span>
 						</li>
 						<li>
-							<span class="pull-left">Tuesday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
+							<span class="pull-left">Samedi</span>
+							<span class="pull-right"><?php echo $userinfo['heure_ouverture_samedi']; ?></span>
 						</li>
 						<li>
-							<span class="pull-left">Wednesday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
+							<span class="pull-left">Dimanche</span>
+							<span class="pull-right"><?php echo $userinfo['heure_ouverture_dimanche']; ?></span>
 						</li>
-						<li>
-							<span class="pull-left">Thrusday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Friday</span>
-							<span class="pull-right">08.00am - 05.00pm</span>
-						</li>
-						<li>
-							<span class="pull-left">Saturday</span>
-							<span class="pull-right"><a href="#">Closed</a></span>
-						</li>
-						<li>
-							<span class="pull-left">Sunday</span>
-							<span class="pull-right"><a href="#">Closed</a></span>
-						</li>
+						
 					</ul>
 				</div>
 			</div>
 			<div class="col-sm-8 col-xs-12">
 				<div class="listDetailsInfo">
 					<div class="detailsInfoBox">
-						<h3>About This Hotel</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. </p>
-						<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est. </p>
-						<p>Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
+						<h3>Description</h3>
+						<p><?php echo $userinfo['description']; ?>  </p>
 					</div>
 					<div class="detailsInfoBox">
-						<h3>Features</h3>
-						<ul class="list-inline featuresItems">
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Wi-Fi</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Street Parking</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Alcohol</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vegetarian</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Reservations</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Pets Friendly</li>
-							<li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Accept Credit Card</li>
-						</ul>
+						<h3>Agrégations</h3>
+<?php 
+ $sql="SELECT marque.id_nom FROM concordance_marque_reparateur INNER JOIN marque ON concordance_marque_reparateur.id_reparateur_ref=".$getid." AND concordance_marque_reparateur.id_marque_ref=marque.id_nom";
+      $stmt=$bdd->prepare($sql);
+      $stmt->execute();
+      $list=$stmt->fetchALL();
+      $test=array();
+      ?> <ul class="list-inline featuresItems">	 <?php
+
+      foreach($list as $value)
+      {
+      ?>
+   
+   	<li><i class="fa fa-check-circle-o" aria-hidden="true"></i><?php echo $value['id_nom']; ?></li>
+   <?php }  ?>
+</ul>
+<?php if(empty($list))
+{echo "Ce réparateur n'a pas d'agrégation";} ?>
+
+
+
+
+
+
+
+
+
+
+            
+						
+
+							
+							
+						
 					</div>
 					<div class="detailsInfoBox">
-						<h3>Avis</h3>
+						<h3>AVIS</h3>
 						<?php
-      $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
       $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref = '4'"; // à modifier en fonction de la page sur laquelle on est co 
+      $sql="SELECT * FROM concordance_note_reparateur_utilisateur WHERE id_reparateur_ref =".$getid; // à modifier en fonction de la page sur laquelle on est co 
       $stmt=$bdd->prepare($sql);
       $stmt->execute();
       $list=$stmt->fetchALL();
@@ -613,6 +631,9 @@ if(isset($_POST['poster'])) {
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY"></script>
   <script src="assets/plugins/map/js/rich-marker.js"></script>
   <script src="assets/plugins/map/js/infobox_packed.js"></script>
+  <input type="hidden" id="mygetid" value="<?php echo $getid; ?>" />
+  <input type="hidden" id="mylat" value="<?php echo $userinfo['lat']; ?>" />
+  <input type="hidden" id="mylng" value="<?php echo $userinfo['lng']; ?>" />
   <script src="assets/js/map.js"></script>
   <script src="assets/js/app.js"></script>
 
