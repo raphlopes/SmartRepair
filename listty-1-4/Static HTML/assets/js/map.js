@@ -357,7 +357,153 @@ if(mapId){
 
           google.maps.event.addListener(marker, "mouseover", function() {
             var infoboxContent =
-              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<div id="iw-container" style="background-image: url(' +
+              marker.data.thumbnail +
+              ');">' +
+              '<div class="iw-content">' +
+              '<ul class="list-inline rating">' +
+        
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              "</ul>" +
+              '<div class="iw-subTitle">' +
+              marker.data.title +
+              "</div>" +
+              "<p>" +
+              marker.data.address +
+              "</p>" +
+              "</div>" +
+              '<div class="iw-bottom-gradient"></div>' +
+              "</div>" +
+              "</a>";
+              if(item.likes==0){
+  infoboxContent =
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<div id="iw-container" style="background-image: url(' +
+              marker.data.thumbnail +
+              ');">' +
+              '<div class="iw-content">' +
+              '<ul class="list-inline rating">' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              "</ul>" +
+              '<div class="iw-subTitle">' +
+              marker.data.title +
+              "</div>" +
+              "<p>" +
+              marker.data.address +
+              "</p>" +
+              "</div>" +
+              '<div class="iw-bottom-gradient"></div>' +
+              "</div>" +
+              "</a>";
+            }
+            if(item.likes==1){
+  infoboxContent =
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<div id="iw-container" style="background-image: url(' +
+              marker.data.thumbnail +
+              ');">' +
+              '<div class="iw-content">' +
+              '<ul class="list-inline rating">' +
+        
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              "</ul>" +
+              '<div class="iw-subTitle">' +
+              marker.data.title +
+              "</div>" +
+              "<p>" +
+              marker.data.address +
+              "</p>" +
+              "</div>" +
+              '<div class="iw-bottom-gradient"></div>' +
+              "</div>" +
+              "</a>";
+            }
+             if(item.likes==2){
+  infoboxContent =
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<div id="iw-container" style="background-image: url(' +
+              marker.data.thumbnail +
+              ');">' +
+              '<div class="iw-content">' +
+              '<ul class="list-inline rating">' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              "</ul>" +
+              '<div class="iw-subTitle">' +
+              marker.data.title +
+              "</div>" +
+              "<p>" +
+              marker.data.address +
+              "</p>" +
+              "</div>" +
+              '<div class="iw-bottom-gradient"></div>' +
+              "</div>" +
+              "</a>";
+            }
+            if(item.likes==3){
+  infoboxContent =
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<div id="iw-container" style="background-image: url(' +
+              marker.data.thumbnail +
+              ');">' +
+              '<div class="iw-content">' +
+              '<ul class="list-inline rating">' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              "</ul>" +
+              '<div class="iw-subTitle">' +
+              marker.data.title +
+              "</div>" +
+              "<p>" +
+              marker.data.address +
+              "</p>" +
+              "</div>" +
+              '<div class="iw-bottom-gradient"></div>' +
+              "</div>" +
+              "</a>";
+            } if(item.likes==4){
+  infoboxContent =
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<div id="iw-container" style="background-image: url(' +
+              marker.data.thumbnail +
+              ');">' +
+              '<div class="iw-content">' +
+              '<ul class="list-inline rating">' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+              '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>' +
+              "</ul>" +
+              '<div class="iw-subTitle">' +
+              marker.data.title +
+              "</div>" +
+              "<p>" +
+              marker.data.address +
+              "</p>" +
+              "</div>" +
+              '<div class="iw-bottom-gradient"></div>' +
+              "</div>" +
+              "</a>";
+            }
+            if(item.likes==5){
+  infoboxContent =
+              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +

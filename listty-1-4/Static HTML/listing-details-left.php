@@ -245,11 +245,26 @@ if(isset($id_rep) AND $id_rep > 0) {
 					<p><?php echo $userinfo['adresse']; ?>
 					<div class="listingReview">
 						<ul class="list-inline rating">
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star" aria-hidden="true"></i></li>
-							<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+							<?php
+							$requser1 = $bdd->prepare("SELECT note FROM reparateur WHERE id_reparateur= '$id_rep'");
+   							$requser1->execute();
+							$note = $requser->fetch();
+							
+							for( $i = 1; $i <= $note[0]; $i++)
+							{ ?>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li> 
+							<?php
+							}
+							
+							$rest = 5.0 - $note[0];
+							for ($i = 1; $i <= $rest; $i++)
+							{
+							?>	
+								<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+							<?php	
+							}
+							?>
+							
 						</ul>
 						<span>( 5 Reviews )</span>
 						<ul class="list-inline captionItem">
