@@ -357,7 +357,7 @@ if(mapId){
 
           google.maps.event.addListener(marker, "mouseover", function() {
             var infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +

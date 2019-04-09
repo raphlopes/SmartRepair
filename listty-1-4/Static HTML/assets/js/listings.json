@@ -7,7 +7,7 @@
         "thumbnail": "reparateurs\/avatars\/51.jpg",
         "verified": false,
         "category": "reparateur",
-        "likes": 7,
+        "likes": "1",
         "lat": "48.8461",
         "lng": "2.30438"
     },
@@ -19,7 +19,7 @@
         "thumbnail": "reparateurs\/avatars\/50.jpg",
         "verified": false,
         "category": "reparateur",
-        "likes": 7,
+        "likes": "5",
         "lat": null,
         "lng": null
     },
@@ -31,7 +31,7 @@
         "thumbnail": "reparateurs\/avatars\/49.jpg",
         "verified": false,
         "category": "reparateur",
-        "likes": 7,
+        "likes": "0",
         "lat": "0",
         "lng": "0"
     },
@@ -43,7 +43,7 @@
         "thumbnail": "reparateurs\/avatars\/47.jpg",
         "verified": false,
         "category": "reparateur",
-        "likes": 7,
+        "likes": "0",
         "lat": "48.8442",
         "lng": "2.32045"
     },
@@ -55,7 +55,7 @@
         "thumbnail": "reparateurs\/avatars\/48.jpg",
         "verified": false,
         "category": "reparateur",
-        "likes": 7,
+        "likes": "0",
         "lat": "48.8442",
         "lng": "2.32045"
     },
@@ -67,7 +67,7 @@
         "thumbnail": "reparateurs\/avatars\/",
         "verified": false,
         "category": "reparateur",
-        "likes": 7,
+        "likes": "0",
         "lat": "48.8723",
         "lng": "2.33334"
     }
