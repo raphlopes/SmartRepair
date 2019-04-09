@@ -182,10 +182,10 @@ if(isset($_POST['forminscription'])) {
 
       <!-- TOP INFO BAR -->
 
-      <div class="nav-wrapper navbarWhite">
-        <!-- NAVBAR -->
-        <nav id="menuBar" class="navbar navbar-default lightHeader animated " role="navigation">
-          <div class="container"> 
+      <div class="nav-wrapper navbarWhite"> 
+      <!-- NAVBAR -->
+      <nav id="menuBar" class="navbar navbar-default lightHeader animated " role="navigation">
+        <div class="container"> 
           
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -488,10 +488,10 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
                   <li><a href="booking-list.html">Rendez-vous</a></li>
                   <li><a href="dashboard-reviews.html">Avis</a></li>
                   <li><a href="listings.html">Mes Ajouts</a></li>
-          <li><a href="user-profile.html">Profil</a></li>
+				  <li><a href="user-profile.html">Profil</a></li>
                   <li><a href="profile.html">Edition du profil</a></li>
                   <li><a href="oders.html">Mes Rendez-vous</a></li>
-          <li><a href="sign-up.php">Creer un compte</a></li>
+				  <li><a href="sign-up.php">Creer un compte</a></li>
                   <li><a href="login.php">Connexion</a></li>
                   <li><a href="index.html">Deconnexion</a></li>
                 </ul>
@@ -499,8 +499,8 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
             </ul>
           </div>
           <a class="btn btn-default navbar-btn" href="add-listings.html"> + <span>Ajouter</span></a> </div>
-        </nav>
-      </div>
+      </nav>
+    </div>
     </header>
 
 
