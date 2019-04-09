@@ -4,33 +4,33 @@ session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 
 
-if(isset($_GET['id']) AND $_GET['id'] > 0) {
-   $getid = intval($_GET['id']);
+if(isset($_GET['idutilisateur']) AND $_GET['idutilisateur'] > 0) {
+   $getid = intval($_GET['idutilisateur']);
    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
    $requser->execute(array($getid));
    $userinfo = $requser->fetch();
 }
 
 
-if(isset($_SESSION['id'])) {
+if(isset($_SESSION['idutilisateur'])) {
    $requser = $bdd->prepare("SELECT * FROM utilisateur WHERE id = ?");
-   $requser->execute(array($_SESSION['id']));
+   $requser->execute(array($_SESSION['idutilisateur']));
    $user = $requser->fetch();
    if(isset($_POST['newnom']) AND !empty($_POST['newnom']) AND $_POST['newnom'] != $user['nom']) {
       $newnom = htmlspecialchars($_POST['newnom']);
       $insertnom = $bdd->prepare("UPDATE utilisateur SET nom = ? WHERE id = ?");
-      $insertnom->execute(array($newnom, $_SESSION['id']));
-      header('Location: profile.php?id='.$_SESSION['id']);
+      $insertnom->execute(array($newnom, $_SESSION['idutilisateur']));
+      header('Location: profile.php?idutilisateur='.$_SESSION['idutilisateur']);
    }
 
    $requser = $bdd->prepare("SELECT * FROM utilisateur WHERE id = ?");
-   $requser->execute(array($_SESSION['id']));
+   $requser->execute(array($_SESSION['idutilisateur']));
    $user = $requser->fetch();
    if(isset($_POST['newprenom']) AND !empty($_POST['newprenom']) AND $_POST['newprenom'] != $user['prenom']) {
       $newprenom = htmlspecialchars($_POST['newprenom']);
       $insertprenom = $bdd->prepare("UPDATE utilisateur SET prenom = ? WHERE id = ?");
-      $insertprenom->execute(array($newprenom, $_SESSION['id']));
-      header('Location: profile.php?id='.$_SESSION['id']);
+      $insertprenom->execute(array($newprenom, $_SESSION['idutilisateur']));
+      header('Location: profile.php?idutilisateur='.$_SESSION['idutilisateur']);
    }
 
 
@@ -38,8 +38,8 @@ if(isset($_SESSION['id'])) {
    if(isset($_POST['newmail']) AND !empty($_POST['newmail']) AND $_POST['newmail'] != $user['mail']) {
       $newmail = htmlspecialchars($_POST['newmail']);
       $insertmail = $bdd->prepare("UPDATE utilisateur SET mail = ? WHERE id = ?");
-      $insertmail->execute(array($newmail, $_SESSION['id']));
-      header('Location: profile.php?id='.$_SESSION['id']);
+      $insertmail->execute(array($newmail, $_SESSION['idutilisateur']));
+      header('Location: profile.php?idutilisateur='.$_SESSION['idutilisateur']);
    }
 
    /*
@@ -63,8 +63,8 @@ if(isset($_SESSION['id'])) {
       $mdp2 = sha1($_POST['newmdp2']);
       if($mdp1 == $mdp2) {
          $insertmdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE id = ?");
-         $insertmdp->execute(array($mdp1, $_SESSION['id']));
-         header('Location: profile.php?id='.$_SESSION['id']);
+         $insertmdp->execute(array($mdp1, $_SESSION['idutilisateur']));
+         header('Location: profile.php?idutilisateur='.$_SESSION['idutilisateur']);
       } else {
          $msg = "Vos deux mdp ne correspondent pas !";
       }
@@ -85,15 +85,15 @@ if(isset($_SESSION['id'])) {
    if($_FILES['avatar']['size'] <= $tailleMax) {
       $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
       if(in_array($extensionUpload, $extensionsValides)) {
-         $chemin = "utilisateur/avatars/".$_SESSION['id'].".".$extensionUpload;
+         $chemin = "utilisateur/avatars/".$_SESSION['idutilisateur'].".".$extensionUpload;
          $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
          if($resultat) {
-            $updateavatar = $bdd->prepare('UPDATE utilisateur SET avatar = :avatar WHERE id = :id');
+            $updateavatar = $bdd->prepare('UPDATE utilisateur SET avatar = :avatar WHERE id = :idutilisateur');
             $updateavatar->execute(array(
-               'avatar' => $_SESSION['id'].".".$extensionUpload,
-               'id' => $_SESSION['id']
+               'avatar' => $_SESSION['idutilisateur'].".".$extensionUpload,
+               'idutilisateur' => $_SESSION['idutilisateur']
                ));
-            header('Location: profile.php?id='.$_SESSION['id']);
+            header('Location: profile.php?idutilisateur='.$_SESSION['idutilisateur']);
          } else {
             $msg = "Erreur durant l'importation de votre photo de profil";
          }
