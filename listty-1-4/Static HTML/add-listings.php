@@ -221,7 +221,7 @@ if(isset($_POST['forminscription'])) {
                               foreach($_POST["marque"] as $marquee) {
 
                                 $insertmbr = $bdd->prepare("INSERT INTO concordance_marque_reparateur(id_marque_ref, id_reparateur_ref ) VALUES(?, ?)");
-                                $insertmbr->execute(array($marquee ,$adresse_info));
+                                $insertmbr->execute(array($marquee ,$last_id));
                                  
                               }
 
