@@ -487,7 +487,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 													}
 													?>
 												</ul>
-												<h2><a href="listing-details-right.html" style="color: #222222"><?php echo $value['nom'];echo  "   ";?><br> <?php echo $list5[0][4]; echo "€"?></a></h2>
+												<h2><a href="listing-details-left.php?id=<?php echo $value['id_reparateur']; ?>" style="color: #222222"><?php echo $value['nom'];echo  "   ";?><br> <?php echo $list5[0][4]; echo "€"?></a></h2>
 												<p><?php echo $value['adresse']; ?> </p> 
 												<p> <?php echo $value['description']; ?></p>
 											</div>
