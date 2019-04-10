@@ -344,7 +344,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li> <a href="index.php" >Accueil</a> </li>
-              <li> <a href="listings-half-screen-map-list.html">Liste</a>
+              <li> <a href="listings-half-screen-map-grid.php">Liste</a>
               </li>
               <li class=" dropdown singleDrop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages <em class="fa fa-angle-down" aria-hidden="true"></em></a>
                 <ul class="dropdown-menu">
@@ -379,7 +379,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       <div class="row">
         <div class="col-xs-12 ">
           <div class="bg-search-white">
-            <form class="form-inline" action="listings-half-screen-map-list.html">
+            <form class="form-inline" action="listings-half-screen-map-grid-recherche.php">
               <div class="form-group">
                 <div class="searchSelectbox">
                   <select name="marque" id="marque" class="select-drop">
@@ -457,7 +457,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 ?>
       <div class="row">
         <div class="col-xs-3 col-xs-6 col-xs-12">
-          <div class="categoryItem"> <a href="listings-half-screen-map-list.php?filtre=<?php echo $value['id_nom']?>">
+          <div class="categoryItem"> <a href="listings-half-screen-map-grid-recherche.php?marque=<?php echo $value['id_nom']?>&modele=null&probleme=null">
             <h2><?php echo $value['id_nom']?></h2>
             </a> </div>
         </div>
@@ -548,7 +548,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 					<div class="thingsCaption ">
 						<ul class="list-inline captionItem">
 							<li><i class="fa fa-heart-o" aria-hidden="true"></i> Ajouter aux favoris</li>
-							<li><a href="listings-half-screen-map-list.html">Réparations</a></li>
+							<li><a href="listings-half-screen-map-grid.php">Réparations</a></li>
 						</ul>
 					</div>
 				</div>
@@ -602,7 +602,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       <div class="container">
         <div class="row">
           <div class="col-sm-7 col-xs-12">
-            <div class="footerText"> <a href="index.html" class="footerLogo">
+            <div class="footerText"> <a href="index.php" class="footerLogo">
               <h2>SmartRepair</h2>
               </a>
               <p>SmartRepair est un site web vous permettant de trouver facilement une boutique pour faire réparer votre smartphone rapidement et au meilleur prix. Pour cela, nous comparons le maximum de réparateurs disponibles et les affichons sur une carte interactive qui vous fournit toutes les informations sur les réparateurs qui correspondent le mieux à vos critères et à votre problème.</p>
@@ -621,7 +621,6 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
                 <li><a href="sign-up.php">Créer un compte</a></li>
                 <li><a href="login.php">Connexion</a></li>
                 <li><a href="add-listings.php">Ajout d'un commerce</a></li>
-                <li><a href="edit-listings.html">Edition d'un commerce</a></li>
               </ul>
             </div>
           </div>
