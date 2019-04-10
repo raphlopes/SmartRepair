@@ -178,7 +178,7 @@ if(isset($_POST['forminscription'])) {
 
   <div class="main-wrapper">
     <!-- HEADER -->
-	  <header id="pageTop" class="header"> 
+	  	  <header id="pageTop" class="header"> 
     
     <!-- TOP INFO BAR -->
     
@@ -458,7 +458,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li> <a href="index.php" >Accueil</a> </li>
-              <li> <a href="listing-list-left-sidebar.html">Liste</a>
+              <li> <a href="listings-half-screen-map-list.html">Liste</a>
               </li>
               <li class=" dropdown singleDrop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages <em class="fa fa-angle-down" aria-hidden="true"></em></a>
                 <ul class="dropdown-menu">
@@ -467,7 +467,6 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
                   <li><a href="how-it-works.html">Aide</a></li>
                 </ul>
               </li>
-              <li class=""><a href="blog.html">blog </a></li>
               <li class=" dropdown singleDrop"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <li><a href="profile.php">Edition du profil</a></li>
