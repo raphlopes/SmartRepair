@@ -275,7 +275,7 @@ if(mapId){
     function initialize() {
       var mapOptions = {
         center: center,
-        zoom: 15,
+        zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         styles: mapStyles,
         scrollwheel: false
@@ -285,7 +285,22 @@ if(mapId){
         mapId,
         mapOptions
       );
+infoWindow = new google.maps.InfoWindow;
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Vous êtes ici !');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } 
       // define the format of the file retrive from server. here it is in JSON format
       var mapdata = {
         format: "json"
@@ -898,18 +913,25 @@ if (listingDetails) {
   var id_rep = $("#mygetid").val();
   var rep_lat = $("#mylat").val();
   var rep_lng = $("#mylng").val();
+
+
   
   const urlParams = new URLSearchParams(window.location.search);
   var mapIdSingle = document.getElementById('map');
   if ((mapIdSingle)&&(rep_lat!=0)&&(rep_lng!=0)) {
     var marker;
 var markerCenter = new google.maps.LatLng(rep_lat,rep_lng);
+ 
+      
+
     function initMap() {
       var map = new google.maps.Map(mapIdSingle, {
         zoom: 16,
         styles: mapStyles,
         center: markerCenter
       });
+
+      
 
       marker = new google.maps.Marker({
         map: map,

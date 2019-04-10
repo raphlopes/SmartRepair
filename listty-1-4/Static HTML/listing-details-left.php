@@ -460,7 +460,7 @@ for ($j=0;$j<$prix[0]['prix'];$j++)
 
 							
 						</ul>
-						<span><?php echo count($prix[0][0]);?></span>
+						<span><?php echo count($prix)." Commentaires";?></span>
 						<ul class="list-inline captionItem">
 							<li><i class="fa fa-heart-o" aria-hidden="true"></i>
 						</ul>
