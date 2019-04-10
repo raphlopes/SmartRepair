@@ -485,7 +485,10 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       $list=$stmt->fetchALL();
       foreach($list as $value)
       {
-
+ $sql2="SELECT prix FROM note INNER JOIN concordance_note_reparateur_utilisateur ON concordance_note_reparateur_utilisateur.id_reparateur_ref=".$value['id_reparateur']." AND note.id_note=concordance_note_reparateur_utilisateur.id_note_ref ";
+      $stmt2=$bdd->prepare($sql2);
+      $stmt2->execute();
+      $note=$stmt2->fetchALL();
 ?>
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="thingsBox thinsSpace">
@@ -513,7 +516,18 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 									<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 								<?php	
 								}
-								?>
+								if (!empty($note[0]['prix'])){
+                  
+                  for($j=0;$j<$note[0]['prix'];$j++){
+                  echo "<b>€</b>";
+
+                }
+                }
+                
+
+
+
+                  ?>
 							</ul>
               
 							<a href="listing-details-left.php?id=<?php echo $value['id_reparateur']?>">

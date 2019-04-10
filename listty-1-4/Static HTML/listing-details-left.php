@@ -448,12 +448,21 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 								<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 							<?php	
 							}
+              $sql2="SELECT * FROM note INNER JOIN concordance_note_reparateur_utilisateur ON concordance_note_reparateur_utilisateur.id_reparateur_ref=".$id_rep." AND note.id_note=concordance_note_reparateur_utilisateur.id_note_ref ";
+      $stmt2=$bdd->prepare($sql2);
+      $stmt2->execute();
+      $prix=$stmt2->fetchALL();
+for ($j=0;$j<$prix[0]['prix'];$j++)
+{
+  echo "€";
+}
 							?>
+
 							
 						</ul>
-						<span>( 5 Reviews )</span>
+						<span><?php echo count($prix[0][0]);?></span>
 						<ul class="list-inline captionItem">
-							<li><i class="fa fa-heart-o" aria-hidden="true"></i> 10 k</li>
+							<li><i class="fa fa-heart-o" aria-hidden="true"></i>
 						</ul>
 					</div>
 				</div>
@@ -517,6 +526,24 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 						
 					</ul>
 				</div>
+        <div class="listSidebar">
+          <h3>Moyens de paiement acceptés</h3>
+          <ul class="list-unstyled sidebarList">
+            <li>
+              <span class="pull-left">Cash</span>
+              <span class="pull-right"><?php if($userinfo['moyen_paiement_cash']==1){echo "Oui";}else{echo "Non";} ?> </span>
+            </li>
+            <li>
+              <span class="pull-left">Carte</span>
+              <span class="pull-right"><?php if($userinfo['moyen_paiement_carte']==1){echo "Oui";}else{echo "Non";} ?></span>
+            </li>
+            <li>
+              <span class="pull-left">Chèque</span>
+              <span class="pull-right"><?php  if($userinfo['moyen_paiement_cheque']==1){echo "Oui";}else{echo "Non";} ?></span>
+            </li>
+            
+          </ul>
+        </div>
 			</div>
 			<div class="col-sm-8 col-xs-12">
 				<div class="listDetailsInfo">
