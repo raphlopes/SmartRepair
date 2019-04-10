@@ -494,7 +494,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 				<div class="thingsBox thinsSpace">
 					<div class="thingsImage">
             <?php if($value['avatar']!=null){ ?>
-  <img src="reparateurs/avatars/<?php echo $value['id_reparateur']?>.jpg" alt="Image things">
+  <img src="reparateurs/avatars/<?php echo $value['avatar']?>" alt="Image things">
             <?php } else { ?>
 
 <img src="assets/img/smartrepair.jpg" alt="Image things">

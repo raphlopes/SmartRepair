@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 10 avr. 2019 à 22:07
--- Version du serveur :  10.1.37-MariaDB
--- Version de PHP :  5.6.40
+-- Généré le :  mer. 10 avr. 2019 à 23:10
+-- Version du serveur :  10.1.38-MariaDB
+-- Version de PHP :  7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -95,6 +95,24 @@ CREATE TABLE `concordance_note_reparateur_utilisateur` (
   `id_note_ref` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `concordance_note_reparateur_utilisateur`
+--
+
+INSERT INTO `concordance_note_reparateur_utilisateur` (`id_concordance_note_reparateur_utilisateur`, `id_utilisateur_ref`, `id_reparateur_ref`, `id_note_ref`) VALUES
+(5, 16, 58, 5),
+(2, 13, 61, 2),
+(3, 14, 61, 3),
+(4, 12, 61, 4),
+(6, 15, 58, 6),
+(7, 16, 60, 7),
+(8, 12, 59, 8),
+(9, 17, 59, 9),
+(10, 17, 61, 10),
+(11, 13, 57, 11),
+(12, 16, 57, 12),
+(13, 15, 57, 13);
+
 -- --------------------------------------------------------
 
 --
@@ -149,7 +167,12 @@ CREATE TABLE `modele` (
 --
 
 INSERT INTO `modele` (`id_modele`, `nom`, `id_marque_ref`) VALUES
-(1, 'Iphone 6s', 'Apple');
+(1, 'Iphone 6s', 'Apple'),
+(2, 'Iphone X', 'Apple'),
+(3, 'Iphone 7', 'Apple'),
+(4, 'Iphone 5s', 'Apple'),
+(5, 'Iphone 8s', 'Apple'),
+(6, 'Iphone 6', 'Apple');
 
 -- --------------------------------------------------------
 
@@ -166,6 +189,25 @@ CREATE TABLE `note` (
   `description` varchar(255) DEFAULT NULL,
   `date_poster` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`id_note`, `prix`, `amabilite`, `temps`, `fiabilite`, `description`, `date_poster`) VALUES
+(1, 5, 3, 5, 5, 'TrÃ¨s bien ', '2019-04-10'),
+(2, 5, 4, 4, 5, 'Super prise en charge !', '2019-04-10'),
+(3, 3, 3, 4, 4, 'Ils sont sympas', '2019-04-10'),
+(4, 3, 3, 4, 4, 'Ils sont sympas', '2019-04-10'),
+(5, 1, 2, 2, 1, 'Nul, pas agrÃ©able.', '2019-04-10'),
+(6, 3, 2, 2, 3, 'Correct mais trop long ', '2019-04-10'),
+(7, 3, 4, 3, 3, 'Bien mais mieux ailleurs', '2019-04-10'),
+(8, 2, 4, 4, 2, 'Tres gentils mais pas tres pros', '2019-04-10'),
+(9, 3, 3, 2, 3, 'je m\'attendais Ã  mieux venant de  gens &quot;sÃ©rieux&quot;', '2019-04-10'),
+(10, 4, 3, 2, 4, 'TrÃ¨s bien mais il faut etre patient :)', '2019-04-10'),
+(11, 4, 3, 3, 4, 'bon service et bon rapport qualitÃ© prix je ne suis pas dÃ©cu ', '2019-04-10'),
+(12, 3, 4, 3, 3, 'J\'ai fait rÃ©parer mon P20 pour pas super cher bon plan ! ;)', '2019-04-10'),
+(13, 3, 4, 2, 3, 'Ils sont gentils mais un peu lent ! :/', '2019-04-10');
 
 -- --------------------------------------------------------
 
@@ -212,11 +254,11 @@ CREATE TABLE `reparateur` (
 --
 
 INSERT INTO `reparateur` (`id_reparateur`, `nom`, `id_adresse_ref`, `description`, `moyen_paiement_cash`, `moyen_paiement_carte`, `moyen_paiement_cheque`, `note`, `site_internet`, `mail`, `mot_de_passe`, `numero_telephone`, `heure_ouverture_semaine`, `heure_ouverture_samedi`, `heure_ouverture_dimanche`, `avatar`, `avatar2`) VALUES
-(58, 'ClassMobile', 75, 'Service de rÃ©paration de matÃ©riel Ã©lectronique Ã  Paris 75018', 1, 1, 0, 0, 'https://www.classmobile.fr/', 'classmobile@outlook.fr', 'cca8aa7849b18cdfdb75ab3f0ee28bbe59e5d43d', '01 71 32 40 56', '09h00 - 19h30', '09h00 - 19h30', 'FermÃ©', '58.png', ''),
-(60, 'SOS Smartphone', 77, 'Service de rÃ©paration de smartphone rapide', 1, 1, 0, 0, 'http://sos-reparation-smartphone.fr/', 'sos-reparation@outlook.fr', '2a816d1b9d8ce72a2468d163d6231af62cedcc19', '09 84 27 90 66', '11h00 - 20h00', '11h00 - 20h00', 'FermÃ©', '60.jpg', ''),
-(61, 'Apple Champs-Ã‰lysÃ©es', 78, 'Service de rÃ©paration Apple Icare et vente de produit Apple', 1, 1, 1, 0, 'https://www.apple.com/fr/retail/champs-elysees/', 'apple@store.fr', 'd0be2dc421be4fcd0172e5afceea3970e2f3d940', '01 70 98 09 00', '10h00 - 21h00', '10h00 - 21h00', '10h00 - 20h00', '61.jpg', ''),
-(59, 'Save', 76, 'Service de rÃ©paration de smartphone rapide sous 1h', 1, 1, 1, 0, 'https://www.save.co/fr/fr', 'save@outlook.fr', '13a4a11319d31c1b323d5774f44240a9ffc984d0', '01 76 34 01 19', '09h30 - 20h00', '09h30 - 20h00', 'FermÃ©', '59.png', ''),
-(57, 'Point Service Mobiles Montparnasse', 74, 'Service de rÃ©paration de matÃ©riel Ã©lectronique Ã  Paris', 1, 1, 0, 0, 'https://www.allopsm.fr/', 'psm_montparnasse@psm.fr', 'c6c7807fe0254f6305d5d376d6d5295757e8005e', '01 45 44 39 11', '09h00 - 19h00', '09h00 - 19h00', 'FermÃ©', '57.jpg', '');
+(58, 'ClassMobile', 75, 'Service de rÃ©paration de matÃ©riel Ã©lectronique Ã  Paris 75018', 1, 1, 0, 2, 'https://www.classmobile.fr/', 'classmobile@outlook.fr', 'cca8aa7849b18cdfdb75ab3f0ee28bbe59e5d43d', '01 71 32 40 56', '09h00 - 19h30', '09h00 - 19h30', 'FermÃ©', '58.png', ''),
+(60, 'SOS Smartphone', 77, 'Service de rÃ©paration de smartphone rapide', 1, 1, 0, 3, 'http://sos-reparation-smartphone.fr/', 'sos-reparation@outlook.fr', '2a816d1b9d8ce72a2468d163d6231af62cedcc19', '09 84 27 90 66', '11h00 - 20h00', '11h00 - 20h00', 'FermÃ©', '60.jpg', ''),
+(61, 'Apple Champs-Ã‰lysÃ©es', 78, 'Service de rÃ©paration Apple Icare et vente de produit Apple', 1, 1, 1, 4, 'https://www.apple.com/fr/retail/champs-elysees/', 'apple@store.fr', 'd0be2dc421be4fcd0172e5afceea3970e2f3d940', '01 70 98 09 00', '10h00 - 21h00', '10h00 - 21h00', '10h00 - 20h00', '61.jpg', ''),
+(59, 'Save', 76, 'Service de rÃ©paration de smartphone rapide sous 1h', 1, 1, 1, 3, 'https://www.save.co/fr/fr', 'save@outlook.fr', '13a4a11319d31c1b323d5774f44240a9ffc984d0', '01 76 34 01 19', '09h30 - 20h00', '09h30 - 20h00', 'FermÃ©', '59.png', ''),
+(57, 'Point Service Mobiles Montparnasse', 74, 'Service de rÃ©paration de matÃ©riel Ã©lectronique Ã  Paris', 1, 1, 0, 3, 'https://www.allopsm.fr/', 'psm_montparnasse@psm.fr', 'c6c7807fe0254f6305d5d376d6d5295757e8005e', '01 45 44 39 11', '09h00 - 19h00', '09h00 - 19h00', 'FermÃ©', '57.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -339,7 +381,7 @@ ALTER TABLE `concordance_marque_reparateur`
 -- AUTO_INCREMENT pour la table `concordance_note_reparateur_utilisateur`
 --
 ALTER TABLE `concordance_note_reparateur_utilisateur`
-  MODIFY `id_concordance_note_reparateur_utilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_concordance_note_reparateur_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `concordance_probleme_reparateur`
@@ -351,13 +393,13 @@ ALTER TABLE `concordance_probleme_reparateur`
 -- AUTO_INCREMENT pour la table `modele`
 --
 ALTER TABLE `modele`
-  MODIFY `id_modele` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_modele` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `id_note` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_note` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `probleme`

@@ -452,10 +452,11 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       $stmt2=$bdd->prepare($sql2);
       $stmt2->execute();
       $prix=$stmt2->fetchALL();
+      if(!empty($prix[0]['prix'])){
 for ($j=0;$j<$prix[0]['prix'];$j++)
 {
   echo "€";
-}
+}}
 							?>
 
 							
@@ -475,9 +476,9 @@ for ($j=0;$j<$prix[0]['prix'];$j++)
 <section class="clearfix paddingAdjustTopBottom">
 	<ul class="list-inline listingImage">
 		<li><img src="reparateurs/avatars/<?php echo $userinfo['avatar']; ?>" alt="Image Listing" class="img-responsive"></li>
-		<li><img src="assets/img/listing/listing-details-2.jpg" alt="Image Listing" class="img-responsive"></li>
-		<li><img src="assets/img/listing/listing-details-3.jpg" alt="Image Listing" class="img-responsive"></li>
-		<li><img src="assets/img/listing/listing-details-4.jpg" alt="Image Listing" class="img-responsive"></li>
+		<li><img src="assets/img/smartrepair.jpg" alt="Image Listing" class="img-responsive"></li>
+		<li><img src="assets/img/smartrepair.jpg" alt="Image Listing" class="img-responsive"></li>
+		<li><img src="assets/img/smartrepair.jpg" alt="Image Listing" class="img-responsive"></li>
 	</ul>
 </section>
 
@@ -612,9 +613,11 @@ for ($j=0;$j<$prix[0]['prix'];$j++)
 							  $stmt3=$bdd->prepare($sql3);
 							  $stmt3->execute();
 							  $list3=$stmt3->fetchALL();
+                echo "/utilisateur/avatars/".$list2[0][5];
 							 ?>
 							<div class="media-left">
-							<img src="<?php echo $list2[0][5];?>" class="media-object img-circle" alt="Image User">
+							<img src="utilisateur/avatars/<?php echo $value['id_utilisateur_ref']; ?>.jpg" width = "150";
+            height ="150"; class="img-circle" />
 							</div>
 							
 							<div class="media-body">
