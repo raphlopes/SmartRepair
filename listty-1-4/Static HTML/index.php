@@ -375,36 +375,64 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
   
   <!-- CATEGORY SECTION -->
   <section class="clearfix bg-light">
-    <div class="container">
+   <div class="container">
       <div class="row">
         <div class="col-xs-12 ">
           <div class="bg-search-white">
             <form class="form-inline" action="listings-half-screen-map-list.html">
               <div class="form-group">
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Mots-clés">
-              </div>
-              <div class="form-group">
                 <div class="searchSelectbox">
-                  <select name="guiest_id3" id="guiest_id3" class="select-drop">
-                    <option value="0">Toutes les localisations</option>
-                    <option value="1">Paris</option>
-                    <option value="2">Lyon</option>
-                    <option value="3">Bordeaux</option>
+                  <select name="marque" id="marque" class="select-drop">
+					  <?php
+						$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
+						$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+						$sql="SELECT * FROM marque";
+						$stmt=$bdd->prepare($sql);
+						$stmt->execute();
+						$list=$stmt->fetchALL();
+						foreach($list as $value)
+						{
+						?>
+                    		<option value="<?php echo $value['id_nom']?>"><?php echo $value['id_nom']?></option>
+					  	<?php } ?>
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <div class="searchSelectbox">
-                  <select name="guiest_id4" id="guiest_id4" class="select-drop">
-                    <option value="0">Toutes les catégories</option>
-                    <option value="1">Toutes les catégories 1</option>
-                    <option value="2">Toutes les catégories 2</option>
-                    <option value="3">Toutes les catégories 3</option>
+                  <select name="modele" id="modele" class="select-drop">
+                    <?php
+						$sql="SELECT * FROM modele WHERE id_marque_ref='Apple'";
+						$stmt=$bdd->prepare($sql);
+						$stmt->execute();
+						$list=$stmt->fetchALL();
+						foreach($list as $value1)
+						{
+						?>
+                    		<option value="<?php echo $value1['nom']?>"><?php echo $value1['nom']?></option>
+					  	<?php } ?>
+                  </select>
+                </div>
+              </div>
+			   <div class="form-group">
+                <div class="searchSelectbox">
+                  <select name="probleme" id="probleme" class="select-drop">
+                    <?php
+						$sql="SELECT * FROM probleme";
+						$stmt=$bdd->prepare($sql);
+						$stmt->execute();
+						$list=$stmt->fetchALL();
+						foreach($list as $value2)
+						{
+						?>
+                    		<option value="<?php echo $value2['nom']?>"><?php echo $value2['nom']?></option>
+					  	<?php } ?>
                   </select>
                 </div>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Recherche</button>
+                <button type="submit" class="btn btn-primary" href="listings-half-screen-map-list.php?marque=<?php echo $value['id_nom']?>&modele=<?php echo $value1['nom']?>&probleme=<?php echo $value2['nom']?> ">Recherche</button>
               </div>
             </form>
           </div>
