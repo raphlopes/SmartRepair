@@ -47,6 +47,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+
 </head>
 
 <body id="body" class="body-wrapper boxed-menu" >
@@ -75,7 +76,7 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="85px" viewBox="0 0 253 202" enable-background="new 0 0 253 202" xml:space="preserve" style="margin-top: -14%">  <image id="image0" width="253" height="202" x="0" y="0"
     href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP0AAADKCAYAAABuSkbpAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAA
@@ -342,48 +343,28 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active dropdown singleDrop"> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accueil</a> </li>
-              <li class=" dropdown megaDropMenu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liste<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                <ul class="row dropdown-menu">
-                  <li class="col-sm-6 col-xs-12">
-                    <ul class="list-unstyled">
-                      <li class="list-item-heading"><a href="listing-list-left-sidebar.html">Liste des Réparateurs</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-sm-6 col-xs-12">
-                    <ul class="list-unstyled">
-                      <li class="list-item-heading"><a href="listings-half-screen-map-list.html">Map</a></li>
-                    </ul>
-                  </li>
-                </ul>
+              <li> <a href="index.php" >Accueil</a> </li>
+              <li> <a href="listing-list-left-sidebar.html">Liste</a>
               </li>
               <li class=" dropdown singleDrop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages <em class="fa fa-angle-down" aria-hidden="true"></em></a>
                 <ul class="dropdown-menu">
                   <li><a href="contact-us.html">Nous contacter</a></li>
-                  <li><a href="terms-of-services.html">Conditions de Service</a></li>
+                  <li><a href="terms-of-services.html">A propos</a></li>
                   <li><a href="how-it-works.html">Aide</a></li>
-                  <li><a href="comming-soon.html">A Venir</a></li>
                 </ul>
               </li>
               <li class=""><a href="blog.html">blog </a></li>
               <li class=" dropdown singleDrop"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
-                  <li><a href="add-listings.html">Ajout</a></li>
-                  <li><a href="edit-listings.html">Edition</a></li>
-                  <li><a href="booking-list.html">Rendez-vous</a></li>
-                  <li><a href="dashboard-reviews.html">Avis</a></li>
-                  <li><a href="listings.html">Mes Ajouts</a></li>
-				  <li><a href="user-profile.html">Profil</a></li>
-                  <li><a href="profile.html">Edition du profil</a></li>
-                  <li><a href="oders.html">Mes Rendez-vous</a></li>
+                  <li><a href="profile.php">Edition du profil</a></li>
 				  <li><a href="sign-up.php">Creer un compte</a></li>
                   <li><a href="login.php">Connexion</a></li>
-                  <li><a href="index.html">Deconnexion</a></li>
+                  <li><a href="index.php">Deconnexion</a></li>
                 </ul>
               </li>
             </ul>
           </div>
-          <a class="btn btn-default navbar-btn" href="add-listings.html"> + <span>Ajouter</span></a> </div>
+          <a class="btn btn-default navbar-btn" href="add-listings.php"> + <span>Ajouter</span></a> </div>
       </nav>
     </div>
   </header>
