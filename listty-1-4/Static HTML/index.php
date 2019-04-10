@@ -64,7 +64,7 @@
 </div>
 <div class="main-wrapper"> 
   <!-- HEADER -->
-		  <header id="pageTop" class="header"> 
+      <header id="pageTop" class="header"> 
     
     <!-- TOP INFO BAR -->
     
@@ -356,7 +356,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
               <li class=" dropdown singleDrop"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <li><a href="profile.php">Edition du profil</a></li>
-				  <li><a href="sign-up.php">Creer un compte</a></li>
+          <li><a href="sign-up.php">Creer un compte</a></li>
                   <li><a href="login.php">Connexion</a></li>
                   <li><a href="index.php">Deconnexion</a></li>
                 </ul>
@@ -367,6 +367,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       </nav>
     </div>
   </header>
+  
   <!-- MAP SECTION -->
   <section class="clearfix p0">
     <div id="map-canvas"></div>
@@ -462,7 +463,13 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="thingsBox thinsSpace">
 					<div class="thingsImage">
-						<img src="assets/img/smartrepair.jpg" alt="Image things">
+            <?php if($value['avatar']!=null){ ?>
+  <img src="reparateurs/avatars/<?php echo $value['id_reparateur']?>.jpg" alt="Image things">
+            <?php } else { ?>
+
+<img src="assets/img/smartrepair.jpg" alt="Image things">
+          <?php  } ?>
+					
 						<div class="thingsMask">
 							<ul class="list-inline rating">
 								<?php
@@ -481,7 +488,8 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 								}
 								?>
 							</ul>
-							<a href="listing-details-left.html">
+              
+							<a href="listing-details-left.php?id=<?php echo $value['id_reparateur']?>">
 							<h2><?php echo $value['nom']; ?><em class="fa fa-check-circle" aria-hidden="true"></em></h2>
 							</a>
 							<p><?php  $sql2="SELECT adresse FROM adresse WHERE id_adresse=". $value['id_adresse_ref'];
@@ -497,7 +505,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 					</div>
 					<div class="thingsCaption ">
 						<ul class="list-inline captionItem">
-							<li><i class="fa fa-heart-o" aria-hidden="true"></i> 8 k</li>
+							<li><i class="fa fa-heart-o" aria-hidden="true"></i> Ajouter aux favoris</li>
 							<li><a href="listings-half-screen-map-list.html">Réparations</a></li>
 						</ul>
 					</div>
