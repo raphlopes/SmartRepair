@@ -469,78 +469,15 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       </nav>
     </div>
   </header>
-    <!-- Dashboard header -->
-    <section class="navbar-dashboard-area">
-      <nav class="navbar navbar-default lightHeader navbar-dashboard" role="navigation">
-        <div class="container">
-
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-dash">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-dash">
-            <ul class="nav navbar-nav mr0">
-              <li class="">
-                <a href="dashboard.html"><i class="fa fa-tachometer icon-dash" aria-hidden="true"></i> Dashboard</a>
-              </li>
-              <li class="dropdown singleDro ">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i> Listings <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                <ul class="dropdown-menu">
-                  <li><a href="listings.html">My Listings</a></li>
-                  <li><a href="add-listings.html">Add Listings</a></li>
-                  <li><a href="edit-listings.html">My Listings</a></li>
-                </ul>
-              </li>
-              <li class="">
-                <a href="dashboard-reviews.html" class="scrolling"><i class="fa fa-star-o icon-dash" aria-hidden="true"></i> Reviews</a>
-              </li>
-              <li class="">
-                <a href="oders.html"><i class="fa fa-cogs icon-dash" aria-hidden="true"></i> Orders</a>
-              </li>
-              <li>
-                <a href="dashboard.html#message" class="scrolling">
-                  <i class="fa fa-envelope icon-dash" aria-hidden="true"> </i>
-                  Messages</a>
-              </li>
-              <li class="active">
-                <a href="profile.html"><i class="fa fa-user icon-dash" aria-hidden="true"></i> Personal Details</a>
-              </li>
-            </ul>
-            <div class="row adjustRow">
-              <div class="pull-right col-xs-12 col-sm-2">
-                <form class="navbar-form" role="search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="icon-listy icon-search-2"></i></button>
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </section>
-
-
 <!-- Dashboard breadcrumb section -->
 <div class="section dashboard-breadcrumb-section bg-dark">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <h2>My Profile</h2>
+        <h2>Mon Profil</h2>
         <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li class="active">My Profile</li>
+          <li><a href="index.php">Accueil</a></li>
+          <li class="active">Mon profil</li>
         </ol>
       </div>
     </div>
@@ -592,18 +529,12 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 								<input type="file" name="img[]" class="file">
               -->
                 
-                <button class="browse"  type="submit" " >Modifier la photo de profil <i class="icon-listy icon-upload"></i></button>
+                <button class="browse"  type="submit" >Modifier la photo de profil <i class="icon-listy icon-upload"></i></button>
                 <!--
 								<button class="browse" type="button">Upload a Picture <i class="icon-listy icon-upload"></i></button>
               -->
 							</div>
 						</div>
-					</div>
-					<div class="profileUserInfo bt profileName">
-						<p>Your Current Plan</p>
-						<h2>Platinum Package</h2>
-						<h5>Next Payment: <span>15/01/2017</span></h5>
-						<a href="#" class="btn btn-primary">Change</a>
 					</div>
 				</div>
       </form>
