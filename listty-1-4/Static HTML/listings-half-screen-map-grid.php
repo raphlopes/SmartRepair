@@ -173,6 +173,19 @@
 <section class="main-contentiner map-half-content grid-two-items">
 	<div class="container-fluid">
 		<div class="row">
+      <?php
+      $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
+      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql="SELECT * FROM reparateur";
+      $stmt=$bdd->prepare($sql);
+      $stmt->execute();
+      $list=$stmt->fetchALL();
+      foreach($list as $value)
+      {
+      }
+
+?>
 			<div class="col-md-8 col-md-push-4 col-xs-12 col-lg-6 col-lg-push-6">
 				<div class="inner-container">
 					<div class="map-lg-fixed">

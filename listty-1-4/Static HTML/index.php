@@ -528,6 +528,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
                         //echo $sql2;
 
               ?></p>
+               <p><?php echo $value['description']; ?> </p>
 						</div>
 					</div>
 					<div class="thingsCaption ">

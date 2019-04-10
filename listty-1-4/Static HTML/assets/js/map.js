@@ -348,8 +348,7 @@ if(mapId){
             map: map,
             shadow: 0,
             content: markerContent,
-            title: "Marker Title",
-            is_logged_in: item.is_logged_in
+            title: "Marker Title"
           });
           markers.push(marker);
 
@@ -614,7 +613,7 @@ if(mapId){
           var isLastElement = true
         }
 
-        var item = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        var truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
         '<div class="row">' +
           '<div class="col-sm-5 col-xs-12">'+
             '<div class="categoryImage">'+
@@ -631,19 +630,211 @@ if(mapId){
                 '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
                 '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
               '</ul>'+
-                '<h2><a href="listing-details-right.html?lat=' + item.lat + '&lng=' + item.lng +'" style="color: #222222">' + item.title + '</a> <span class="likeCount">'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
                 '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
                 '<p>' + item.address + '</p>' +
                 '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>' +
               '<ul class="list-inline list-tag">' +
-                '<li><a href="listings-half-screen-map-list.html">' + item.category +'</a></li> '+
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+      if (item.likes==0){
+        truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        '<div class="row">' +
+          '<div class="col-sm-5 col-xs-12">'+
+            '<div class="categoryImage">'+
+              '<img src="' + item.thumbnail + '" alt="Image category" class="img-responsive img-rounded">'+
+              '<span class="label label-primary">' + (item.verified ? 'verified' : '') +'</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="col-sm-7 col-xs-12">'+
+            '<div class="categoryDetails">'+
+              '<ul class="list-inline rating">' +
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+              '</ul>'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
+                '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
+                '<p>' + item.address + '</p>' +
+                '<p>'+item.description+' </p>' +
+              '<ul class="list-inline list-tag">' +
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
               '</ul>' +
             '</div>' +
           '</div>' +
         '</div>' +
       '</div>';
 
-      var $listItem = $(item)
+
+      }
+      if (item.likes==1){
+        truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        '<div class="row">' +
+          '<div class="col-sm-5 col-xs-12">'+
+            '<div class="categoryImage">'+
+              '<img src="' + item.thumbnail + '" alt="Image category" class="img-responsive img-rounded">'+
+              '<span class="label label-primary">' + (item.verified ? 'verified' : '') +'</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="col-sm-7 col-xs-12">'+
+            '<div class="categoryDetails">'+
+              '<ul class="list-inline rating">' +
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+              '</ul>'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
+                '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
+                '<p>' + item.address + '</p>' +
+                '<p>'+item.description+' </p>' +
+                 '<ul class="list-inline list-tag">' +
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+
+      }
+      if (item.likes==2){
+        truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        '<div class="row">' +
+          '<div class="col-sm-5 col-xs-12">'+
+            '<div class="categoryImage">'+
+              '<img src="' + item.thumbnail + '" alt="Image category" class="img-responsive img-rounded">'+
+              '<span class="label label-primary">' + (item.verified ? 'verified' : '') +'</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="col-sm-7 col-xs-12">'+
+            '<div class="categoryDetails">'+
+              '<ul class="list-inline rating">' +
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+              '</ul>'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
+                '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
+                '<p>' + item.address + '</p>' +
+               '<p>'+item.description+' </p>' +
+                  '<ul class="list-inline list-tag">' +
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+
+      }
+      if (item.likes==3){
+        truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        '<div class="row">' +
+          '<div class="col-sm-5 col-xs-12">'+
+            '<div class="categoryImage">'+
+              '<img src="' + item.thumbnail + '" alt="Image category" class="img-responsive img-rounded">'+
+              '<span class="label label-primary">' + (item.verified ? 'verified' : '') +'</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="col-sm-7 col-xs-12">'+
+            '<div class="categoryDetails">'+
+              '<ul class="list-inline rating">' +
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+              '</ul>'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
+                '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
+                '<p>' + item.address + '</p>' +
+               '<p>'+item.description+' </p>' +
+                '<ul class="list-inline list-tag">' +
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+
+      }
+      if (item.likes==4){
+        truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        '<div class="row">' +
+          '<div class="col-sm-5 col-xs-12">'+
+            '<div class="categoryImage">'+
+              '<img src="' + item.thumbnail + '" alt="Image category" class="img-responsive img-rounded">'+
+              '<span class="label label-primary">' + (item.verified ? 'verified' : '') +'</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="col-sm-7 col-xs-12">'+
+            '<div class="categoryDetails">'+
+              '<ul class="list-inline rating">' +
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star-o" aria-hidden="true"></i></li> '+
+              '</ul>'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
+                '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
+                '<p>' + item.address + '</p>' +
+               '<p>'+item.description+' </p>' +
+                 '<ul class="list-inline list-tag">' +
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+
+      }
+      if (item.likes==5){
+        truc = '<div class="listContent '+ (isLastElement ? 'borderRemove' : '') + '" data-marker-id="' + item.id + '">' +
+        '<div class="row">' +
+          '<div class="col-sm-5 col-xs-12">'+
+            '<div class="categoryImage">'+
+              '<img src="' + item.thumbnail + '" alt="Image category" class="img-responsive img-rounded">'+
+              '<span class="label label-primary">' + (item.verified ? 'verified' : '') +'</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="col-sm-7 col-xs-12">'+
+            '<div class="categoryDetails">'+
+              '<ul class="list-inline rating">' +
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+                '<li><i class="fa fa-star" aria-hidden="true"></i></li> '+
+              '</ul>'+
+                '<h2><a href="listing-details-left.php?id=' + item.id+'">' + item.title + '</a> <span class="likeCount">'+
+                '<i class="fa fa-heart-o" aria-hidden="true"></i> ' + item.likes +'</span></h2>'+
+                '<p>' + item.address + '</p>' +
+                '<p>'+item.description+' </p>' +
+                 '<ul class="list-inline list-tag">' +
+                '<li><a href="listings-half-screen-map-list.php">' + item.category +'</a></li> '+
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+
+      }
+
+      var $listItem = $(truc)
       listItems.append($listItem)
 
       });

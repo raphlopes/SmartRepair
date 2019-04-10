@@ -22,9 +22,9 @@
 	   //Get form data
 	   $formdata = array(
 	      "id"=> $value['id_reparateur'],
-	      'is_logged_in'=> 1,
+	      'description'=> $value['description'],
 	      'title'=>$value['nom'],
-	      'adress'=> $value['adresse'],
+	      'address'=> $value['adresse'],
 	      'thumbnail'=> "reparateurs/avatars/".$value['avatar'],
 	      'verified'=> false,
 	      'category'=> $value['type'],
@@ -32,6 +32,21 @@
 	      'lat'=> $value['lat'],
 	      'lng'=> $value['lng'],
 	   );
+	   if(empty($value['avatar'])){
+	   	$formdata = array(
+	      "id"=> $value['id_reparateur'],
+	      'description'=> $value['description'],
+	      'title'=>$value['nom'],
+	      'address'=> $value['adresse'],
+	      'thumbnail'=> "assets/img/smartrepair.jpg",
+	      'verified'=> false,
+	      'category'=> $value['type'],
+	      'likes'=> $value['note'] ,
+	      'lat'=> $value['lat'],
+	      'lng'=> $value['lng'],
+	   );
+	   }
+	  
 
 	   //Get data from existing json file
 	  // $jsondata = file_get_contents($myFile);
