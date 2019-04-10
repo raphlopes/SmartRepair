@@ -448,7 +448,6 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 								</div>
 								
 								<?php
-								echo $marque;
 								$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
 								
 								 $sql4="SELECT * FROM reparateur INNER JOIN concordance_marque_reparateur ON reparateur.id_reparateur=concordance_marque_reparateur.id_reparateur_ref INNER JOIN adresse ON adresse.id_adresse=reparateur.id_adresse_ref WHERE id_marque_ref='" .$marque."'" ;
