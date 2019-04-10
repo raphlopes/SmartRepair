@@ -178,13 +178,13 @@ if(isset($_POST['forminscription'])) {
 
   <div class="main-wrapper">
     <!-- HEADER -->
-    <header id="pageTop" class="header">
-
-      <!-- TOP INFO BAR -->
-
-      <div class="nav-wrapper navbarWhite"> 
+	  <header id="pageTop" class="header"> 
+    
+    <!-- TOP INFO BAR -->
+    
+    <div class="nav-wrapper navbarWhite"> 
       <!-- NAVBAR -->
-		  <nav id="menuBar" class="navbar navbar-default lightHeader animated " role="navigation">
+      <nav id="menuBar" class="navbar navbar-default lightHeader animated " role="navigation">
         <div class="container"> 
           
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -457,9 +457,8 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li> <a href="index.php">Accueil</a> 
-			</li>	
-              <li> <a href="listings-half-screen-map-list.html">Liste</a>
+              <li> <a href="index.php" >Accueil</a> </li>
+              <li> <a href="listing-list-left-sidebar.html">Liste</a>
               </li>
               <li class=" dropdown singleDrop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages <em class="fa fa-angle-down" aria-hidden="true"></em></a>
                 <ul class="dropdown-menu">
@@ -468,22 +467,21 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
                   <li><a href="how-it-works.html">Aide</a></li>
                 </ul>
               </li>
+              <li class=""><a href="blog.html">blog </a></li>
               <li class=" dropdown singleDrop"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compte<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <li><a href="profile.php">Edition du profil</a></li>
 				  <li><a href="sign-up.php">Creer un compte</a></li>
                   <li><a href="login.php">Connexion</a></li>
-                  <li><a href="index.html">Deconnexion</a></li>
+                  <li><a href="index.php">Deconnexion</a></li>
                 </ul>
               </li>
             </ul>
           </div>
-          <a class="btn btn-default navbar-btn" href="add-listings.html"> + <span>Ajouter</span></a> </div>
+          <a class="btn btn-default navbar-btn" href="add-listings.php"> + <span>Ajouter</span></a> </div>
       </nav>
-		</div>
-    </header>
-
-
+    </div>
+  </header>
 <!-- PAGE TITLE SECTION -->
 <section class="clearfix pageTitleSection" style="background-image: url();">
 	<div class="container">
