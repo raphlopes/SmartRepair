@@ -28,7 +28,7 @@
 	      'thumbnail'=> "reparateurs/avatars/".$value['avatar'],
 	      'verified'=> false,
 	      'category'=> $value['type'],
-	      'likes'=> 7,
+	      'likes'=> $value['note'] ,
 	      'lat'=> $value['lat'],
 	      'lng'=> $value['lng'],
 	   );

@@ -355,9 +355,9 @@ if(mapId){
 
           var infoboxTimeout;
 
-          google.maps.event.addListener(marker, "mouseover", function() {
+          google.maps.event.addListener( marker, "mouseover", function() {
             var infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -378,7 +378,7 @@ if(mapId){
               "</a>";
               if(item.likes==0){
   infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -403,7 +403,7 @@ if(mapId){
             }
             if(item.likes==1){
   infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -429,7 +429,7 @@ if(mapId){
             }
              if(item.likes==2){
   infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -454,7 +454,7 @@ if(mapId){
             }
             if(item.likes==3){
   infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -478,7 +478,7 @@ if(mapId){
               "</a>";
             } if(item.likes==4){
   infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -503,7 +503,7 @@ if(mapId){
             }
             if(item.likes==5){
   infoboxContent =
-              '<a class="list-link"  href="listing-details-left-test.php?id=' + item.id +'">' +
+              '<a class="list-link"  href="listing-details-left.php?id=' + item.id +'">' +
               '<div id="iw-container" style="background-image: url(' +
               marker.data.thumbnail +
               ');">' +
@@ -525,7 +525,7 @@ if(mapId){
               '<div class="iw-bottom-gradient"></div>' +
               "</div>" +
               "</a>";
-
+}
             clearTimeout(infoboxTimeout);
             infobox.setContent(infoboxContent);
             infobox.open(map, this);
