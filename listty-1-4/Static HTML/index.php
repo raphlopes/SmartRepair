@@ -413,29 +413,28 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
     </div>
     <div class="container">
       <div class="page-header text-center">
-        <h2>Recherche par catégories <small>Explorer et connecter vous à des business </small></h2>
+        <h2>Recherche par catégories <small>Rechercher un réparateur capable de réparer votre modèle </small></h2>
       </div>
+		<?php
+		  $bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
+		  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		  $sql="SELECT * FROM marque";
+		  $stmt=$bdd->prepare($sql);
+		  $stmt->execute();
+		  $list=$stmt->fetchALL();
+		  foreach($list as $value)
+		  {
+
+?>
       <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="categoryItem"> <a href="listings-half-screen-map-list.html">
-            <h2>Test3</h2>
+        <div class="col-xs-3 col-xs-6 col-xs-12">
+          <div class="categoryItem"> <a href="listings-half-screen-map-list.php?filtre=<?php echo $value['id_nom']?>">
+            <h2><?php echo $value['id_nom']?></h2>
             </a> </div>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="categoryItem"> <a href="listings-half-screen-map-list.html">
-            <h2>Test3</h2>
-            </a> </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="categoryItem"> <a href="listings-half-screen-map-list.html">
-            <h2>Test3</h2>
-            </a> </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="categoryItem"> <a href="listings-half-screen-map-list.html">
-            <h2>Test4</h2>
-            </a> </div>
-        </div>
+        
+      <?php } ?>
       </div>
     </div>
   </section>
