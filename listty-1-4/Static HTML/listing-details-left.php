@@ -455,7 +455,6 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 						<ul class="list-inline captionItem">
 							<li><i class="fa fa-heart-o" aria-hidden="true"></i> 10 k</li>
 						</ul>
-						<a href="dashboard-reviews.html" class="btn btn-primary">Write a review</a>
 					</div>
 				</div>
 			</div>
