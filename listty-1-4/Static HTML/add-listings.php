@@ -347,7 +347,7 @@ if(isset($_POST['forminscription'])) {
 <?php
 
 
-       //if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
+       if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
 
 
     $last_id = $bdd->query("SELECT max(id_reparateur) FROM reparateur");
@@ -359,7 +359,9 @@ if(isset($_POST['forminscription'])) {
 
    $tailleMax = 2097152;
    $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
-  // if($_FILES['avatar']['size'] <= $tailleMax) {
+
+   //image 1
+   if($_FILES['avatar']['size'] <= $tailleMax) {
       $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
       if(in_array($extensionUpload, $extensionsValides)) {
          $chemin = "reparateurs/avatars/".$count.".".$extensionUpload;
@@ -377,11 +379,26 @@ if(isset($_POST['forminscription'])) {
       } else {
          $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png";
       }
-   
-   //} else {
-     // $msg = "Votre photo de profil ne doit pas dépasser 2Mo";
-   //}
-//}
+
+   } else {
+      $msg = "Votre photo de profil ne doit pas dépasser 2Mo";
+   }
+
+
+
+}
+
+
+
+
+
+
+
+      //image 2
+
+
+
+
 
 
                 ?>
@@ -860,6 +877,8 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 												<input type="file" name="img[]" class="file">
                        <!-- <button class="browse" type="file" id="avatar" name="avatar">Image de couverture </button> -->
                         <input  type="file" id="avatar" name="avatar"></input> 
+                        <br/>
+                        <input  type="file" id="avatar2" name="avatar2"></input>
 
 											</div>
 										</div>
@@ -897,7 +916,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
           <div class="dashboardBoxBg mb30">
             <div class="profileIntro paraMargin">
 
-              <h3>Marque(s) pris en chage</h3>
+              <h3>Marque(s) prise en chage</h3>
               <tr>
                   <td align="right">
                       
@@ -981,6 +1000,57 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 
              </div>
            </div>
+
+
+
+           <div class="dashboardBoxBg mb30">
+            <div class="profileIntro paraMargin">
+
+
+              <?php 
+                      if(isset($_POST['paiement'])){
+
+                      foreach($_POST['paiement'] as $valeur)
+                      {
+                         echo "<br/>";
+                         echo "La checkbox $valeur a été <br>";
+                      }
+                
+
+              }
+
+
+                    if(isset($_POST['paiement'])){
+                      echo "case coché";
+
+                      foreach($_POST['paiement'] as $valeur)
+                      {
+                         echo "<br/>";
+                         echo "La checkbox $valeur a été cochée<br>";
+                      }
+                
+
+                      }
+
+              ?>
+
+              <h3>Les paiements acceptés</h3>
+              <tr>
+                  <td align="right">
+                      
+               <input type="checkbox" name="paiement1" value="cb" />Paiement par C.B<br>
+               <input type="checkbox" name="paiement2" value="espece" />Paiement par Espèce<br>
+               <input type="checkbox" name="paiement3" value="cheque" />Paiement par chèque<br>
+
+
+                  </td>
+               </tr>
+
+             </div>
+           </div>
+
+
+
 
           <div class="dashboardBoxBg mb30">
             <div class="profileIntro paraMargin">
