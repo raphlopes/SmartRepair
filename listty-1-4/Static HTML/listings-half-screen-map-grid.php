@@ -385,45 +385,60 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 				<!-- CATEGORY SEARCH SECTION -->
 				<section class="clearfix searchArea banerInfo searchAreaGray grid-search">
 					<form>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
-									<div class="form-group">
-										<div class="input-group">
-											<div class="input-group-addon">Trouver</div>
-											<input type="text" class="form-control" id="findItem" placeholder="Que cherchez vous?">
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
-									<div class="form-group">
-										<div class="input-group">
-											<div class="input-group-addon">Prèes de vous</div>
-											<input type="text" class="form-control" id="nearLocation" placeholder="Location">
-											<div class="input-group-addon addon-right"><i class="icon-listy icon-target" aria-hidden="true"></i></div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
-									<div class="searchPart">
-										<div class="searchPartInner">
-											<div class="searchPartTitle">Categories</div>
-											<div class="searchSelectboxes">
-												<select name="guiest_id32" id="guiest_id32" class="select-drop">
-													<option value="0">Categories</option>
-													<option value="1">Categories 1</option>
-													<option value="2">Categories 2</option>
-													<option value="3">Categories 3</option>
-												</select>
-											</div>
-										</div>
-									</div>
+						<div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
+                <div class="searchSelectbox">
+                  <select name="marque" id="marque" class="select-drop">
+					  <?php
+						$bdd = new PDO('mysql:host=127.0.0.1;dbname=smartrepair', 'root', '');
+						$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+						$sql="SELECT * FROM marque";
+						$stmt=$bdd->prepare($sql);
+						$stmt->execute();
+						$list=$stmt->fetchALL();
+						foreach($list as $value)
+						{
+						?>
+                    		<option value="<?php echo $value['id_nom']?>"><?php echo $value['id_nom']?></option>
+					  	<?php } ?>
+                  </select>
                 </div>
-                <div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
-                  <button class="btn btn-primary" type="submit">Mettre à jour</button>
+              </div>
+              <div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
+                <div class="searchSelectbox">
+                  <select name="modele" id="modele" class="select-drop">
+                    <?php
+						$sql="SELECT * FROM modele WHERE id_marque_ref='Apple'";
+						$stmt=$bdd->prepare($sql);
+						$stmt->execute();
+						$list=$stmt->fetchALL();
+						foreach($list as $value1)
+						{
+						?>
+                    		<option value="<?php echo $value1['nom']?>"><?php echo $value1['nom']?></option>
+					  	<?php } ?>
+                  </select>
                 </div>
-							</div>
-						</div>
+              </div>
+			   <div class="col-sm-6 col-xs-12 col-md-12 col-lg-6">
+                <div class="searchSelectbox">
+                  <select name="probleme" id="probleme" class="select-drop">
+                    <?php
+						$sql="SELECT * FROM probleme";
+						$stmt=$bdd->prepare($sql);
+						$stmt->execute();
+						$list=$stmt->fetchALL();
+						foreach($list as $value2)
+						{
+						?>
+                    		<option value="<?php echo $value2['nom']?>"><?php echo $value2['nom']?></option>
+					  	<?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" href="listings-half-screen-map-grid-recherche.php?marque=<?php echo $value['id_nom']?>&modele=<?php echo $value1['nom']?>&probleme=<?php echo $value2['nom']?> ">Recherche</button>
+              </div>
 					</form>
 				</section>
 				<!-- CATEGORY GRID SECTION -->
@@ -432,7 +447,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 						<div class="row">
 							<div class="col-sm-12 col-xs-12">
 								<div class="resultBar">
-									<h2>We found <span>6</span> Results for you</h2>
+									<h2>Nous avons trouvé <span>6</span> résultats pour vous</h2>
 								</div>
 								<div class="row" id="list-items"></div>
 								<div class="paginationCommon">
