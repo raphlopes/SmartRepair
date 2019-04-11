@@ -502,7 +502,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 				<div class="signUpFormArea">
 					<div class="priceTableTitle">
 						<h2>Inscription</h2>
-						<p>Remplissez les champs pour créer votre compte. Nous vous enverrons vos informations à l'adresse e-mail corespondante. Votre adresse mail et vos informations personnelles ne seront ni vendus ni partagés à des tiers. Si vous avez déjà un compte, svp<a href="login.html">click here</a>.</p>
+						<p>Remplissez les champs pour créer votre compte. Nous vous enverrons vos informations à l'adresse e-mail corespondante. Votre adresse mail et vos informations personnelles ne seront ni vendus ni partagés à des tiers. Si vous avez déjà un compte, svp <a href="login.php">cliquez ici</a>.</p>
 					</div>
 					<div class="signUpForm">
 					  <form method="POST" action="#">

@@ -1084,18 +1084,73 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
             echo '<font>'.$msg."</font>";
          }
          ?>
-
-    <!-- FOOTER -->
-    <footer class="copyRightDashboard">
+  <!-- FOOTER -->
+  <footer class="footerWhite"> 
+    <!-- FOOTER INFO -->
+    <div class="clearfix footerInfo">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12">
-            <p>SmartRepair @2019. </p>
+          <div class="col-sm-7 col-xs-12">
+            <div class="footerText"> <a href="index.php" class="footerLogo">
+              <h2>SmartRepair</h2>
+              </a>
+              <p>SmartRepair est un site web vous permettant de trouver facilement une boutique pour faire réparer votre smartphone rapidement et au meilleur prix. Pour cela, nous comparons le maximum de réparateurs disponibles et les affichons sur une carte interactive qui vous fournit toutes les informations sur les réparateurs qui correspondent le mieux à vos critères et à votre problème.</p>
+              <ul class="list-styled list-contact">
+                <li><i class="fa fa-phone" aria-hidden="true"></i>+33 6 40 74 70 78</li>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">smartrepair@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <div class="footerInfoTitle">
+              <h4>Liens</h4>
+            </div>
+            <div class="useLink">
+              <ul class="list-unstyled">
+                <li><a href="sign-up.php">Créer un compte</a></li>
+                <li><a href="login.php">Connexion</a></li>
+                <li><a href="add-listings.php">Ajout d'un commerce</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2 col-xs-12">
+            <div class="footerInfoTitle">
+              <h4>L'équipe SmartRepair</h4>
+            </div>
+            <div class="useLink">
+              <ul class="list-unstyled">
+                <li><a href="contact-us.html">Nous contacter</a></li>
+                <li><a href="terms-of-services.html">Termes et Conditions générales</a></li>
+                <li><a href="how-it-works.html">Comment cela fonctionne</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+    
+    <!-- COPY RIGHT -->
+    <div class="clearfix copyRight">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="copyRightWrapper">
+              <div class="row">
+                <div class="col-sm-5 col-sm-push-7 col-xs-12">
+                  <ul class="list-inline socialLink">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- JAVASCRIPTS -->
   <script src="assets/plugins/jquery/jquery.min.js"></script>
