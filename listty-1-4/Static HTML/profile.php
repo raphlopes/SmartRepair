@@ -552,7 +552,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 					</div>
 					<div class="dashboardBoxBg mt30">
 						<div class="profileIntro">
-							<h3>About You</h3>
+							<h3>A propos</h3>
 							<div class="row">
 								<div class="form-group col-sm-6 col-xs-12">
 									<label for="firstNameProfile">Nom</label>
@@ -629,24 +629,24 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
 
 					<div class="dashboardBoxBg mt30">
 						<div class="profileIntro">
-							<h3>Update password</h3>
+							<h3>Changement de mot de Passe</h3>
 							<div class="row">
 								<div class="form-group col-xs-12">
-									<label for="currentPassword">Current Password</label>
+									<label for="currentPassword">Mot de passe actuel</label>
                   <input type="password" class="form-control" name="ancienmdp"  placeholder="Ancien mot de passe" id="ancienmdp" />
                   <!--
 									<input type="password" class="form-control" id="currentPassword" placeholder="********">
                 -->
 								</div>
 								<div class="form-group col-xs-12">
-									<label for="newPassword">New Password</label>
+									<label for="newPassword">Nouveau mot de passe</label>
                   <input type="password" class="form-control" name="newmdp1" placeholder="Nouveau Mot de passe"/>
                   <!--
 									<input type="password" class="form-control" id="newPassword" placeholder="New Password">
                 -->
 								</div>
 								<div class="form-group col-xs-12">
-									<label for="confirmPassword">Confirm Password</label>
+									<label for="confirmPassword">Confirmation du mot de passe</label>
                   <input type="password" class="form-control" name="newmdp2" placeholder="Confirmation du mot de passe" />
                   <!--
 									<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">

@@ -613,7 +613,7 @@ for ($j=0;$j<$prix[0]['prix'];$j++)
 							  $stmt3=$bdd->prepare($sql3);
 							  $stmt3->execute();
 							  $list3=$stmt3->fetchALL();
-                echo "/utilisateur/avatars/".$list2[0][5];
+              
 							 ?>
 							<div class="media-left">
 							<img src="utilisateur/avatars/<?php echo $value['id_utilisateur_ref']; ?>.jpg" width = "150";
