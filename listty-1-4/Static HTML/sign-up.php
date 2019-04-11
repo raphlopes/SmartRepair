@@ -590,7 +590,7 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
       <div class="container">
         <div class="row">
           <div class="col-sm-7 col-xs-12">
-            <div class="footerText"> <a href="index.html" class="footerLogo">
+            <div class="footerText"> <a href="index.php" class="footerLogo">
               <h2>SmartRepair</h2>
               </a>
               <p>SmartRepair est un site web vous permettant de trouver facilement une boutique pour faire réparer votre smartphone rapidement et au meilleur prix. Pour cela, nous comparons le maximum de réparateurs disponibles et les affichons sur une carte interactive qui vous fournit toutes les informations sur les réparateurs qui correspondent le mieux à vos critères et à votre problème.</p>
@@ -609,7 +609,6 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
                 <li><a href="sign-up.php">Créer un compte</a></li>
                 <li><a href="login.php">Connexion</a></li>
                 <li><a href="add-listings.php">Ajout d'un commerce</a></li>
-                <li><a href="edit-listings.html">Edition d'un commerce</a></li>
               </ul>
             </div>
           </div>
@@ -628,36 +627,29 @@ MDE5LTAzLTE4VDA2OjE4OjQzLTA3OjAwfjz4PAAAAABJRU5ErkJggg==" />
         </div>
       </div>
     </div>
-
-        <!-- COPY RIGHT -->
-        <div class="clearfix copyRight">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="copyRightWrapper">
-                  <div class="row">
-                    <div class="col-sm-5 col-sm-push-7 col-xs-12">
-                      <ul class="list-inline socialLink">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
-                      <div class="copyRightText">
-                        <p>Copyright &copy; 2019. Tous droits réservés <a href="http://iamabdus.com/">Abdus</a></p>
-                      </div>
-                    </div>
-                  </div>
+    
+    <!-- COPY RIGHT -->
+    <div class="clearfix copyRight">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="copyRightWrapper">
+              <div class="row">
+                <div class="col-sm-5 col-sm-push-7 col-xs-12">
+                  <ul class="list-inline socialLink">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                  </ul>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
   </div>
 
   <!-- LOGIN  MODAL -->
